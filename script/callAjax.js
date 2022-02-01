@@ -15,9 +15,9 @@ function callAjax(op,msg) {
                 product.innerHTML += "<img src='/images/"+msg+"/"+result['image']+"' width='350px' style='margin:5px'>";
             }else if( result['result'] == "getDetail" ) { 
                 var detail=document.getElementById("detail");
-                detail.setAttribute("style","width:"+ result['fileList'].length*640 +"px");
+                detail.setAttribute("style","width:"+ result['fileList'].length*480 +"px");
                 result['fileList'].forEach(file => {
-                    detail.innerHTML += "<img src='/images/"+msg+"/"+file+"' width='640px'>";
+                    detail.innerHTML += "<img src='/images/"+msg+"/"+file+"' width='480px'>";
                 });
             }
         } //function끝
