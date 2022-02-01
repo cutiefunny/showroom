@@ -7,6 +7,7 @@ const moment = require('moment');
 const bodyparser= require('body-parser');
 const router = require('./router');
 const ajax = require('./ajax');
+const CRUD= require("./CRUD");
 const app = express();
 
 app.set('view engine', 'pug');

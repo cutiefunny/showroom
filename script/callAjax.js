@@ -10,18 +10,16 @@ function callAjax(op,msg) {
             , op : op
         },
         success: function(result) {
-            //테스트
-            if ( result['result'] == "getFileList" ) {  
-                document.getElementById(msg).innerHTML += "<img src='/images/"+msg+"/"+result['fileList'][0]+"' width='350px' style='margin:5px'>";
-                if(result['fileList'].length>1){
-                    document.getElementById(msg).innerHTML += "<button class='ui button mini'>+"+(result['fileList'].length-1)+" more image"
-                }
-                document.getElementById(msg).innerHTML += "price : --- won";
-                // result['fileList'].forEach(file => {
-                //     document.getElementById(msg).innerHTML += "<img src='/images/"+msg+"/"+file+"' width='350px'>";
-                // });
+            if ( result['result'] == "getImage" ) { 
+                var product=document.getElementById(msg);
+                product.innerHTML += "<img src='/images/"+msg+"/"+result['image']+"' width='350px' style='margin:5px'>";
+            }else if( result['result'] == "getDetail" ) { 
+                var detail=document.getElementById("detail");
+                detail.setAttribute("style","width:"+ result['fileList'].length*350 +"px");
+                result['fileList'].forEach(file => {
+                    detail.innerHTML += "<img src='/images/"+msg+"/"+file+"' width='350px'>";
+                });
             }
-            
         } //function끝
     }).done(function(response) {
         //alert("success");

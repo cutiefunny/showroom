@@ -10,10 +10,15 @@ html
             H1= title 
             P
             table
-                each folder in folderList 
-                    H3= folder
-                    div(id=folder,name="products")
+                each product in products 
+                    H3= product.name
+                    div(id=product.name,name="products",onclick="modal(this.id)")
+                    span= product.price
+                        | 원
                     P
+            .ui.modal 
+                .scrolling.content
+                    #detail
     script(src="//code.jquery.com/jquery-1.11.0.min.js")
     script(src="https://cdn.jsdelivr.net/npm/fomantic-ui@2.8.8/dist/semantic.min.js")
     script(src="/script/main.js")
