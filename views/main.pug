@@ -7,15 +7,14 @@ html
         link(rel='stylesheet', href='/views/css/main.css')
     body
         center
-            H1= title 
+            img(src="/images/title.png" width="350px" style="padding-top:20px")
             P
-            table
                 each product in products 
-                    H3= product.name
-                    div(id=product.name,name="products",onclick="modal(this.id)")
-                    span= product.price
-                        | 원
-                    P
+                    H3(style="border-color:lightgray;border-width:thin;border-style:solid;width:370px;padding-top:10px")= product.name
+                        div(id=product.name,name="products",onclick="modal(this.id)")
+                        span(style="font-size:11pt;")= product.price
+                            | 원
+                        P
             .ui.modal 
                 .scrolling.content
                     #detail
