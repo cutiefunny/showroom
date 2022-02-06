@@ -7,7 +7,13 @@ html
         link(rel='stylesheet', href='/views/css/main.css')
     body
         center
-            img(src="/images/title.png" width="350px" style="padding-top:20px")
+            img(src="/images/title.png" width="350px" style="padding-top:20px;padding-bottom:30px")
+            P
+            each tag in tags 
+                if tag==="전체"
+                    button.mini.ui.green.button(style="margin-bottom:3px")= tag
+                else
+                    button.mini.ui.button(style="margin-bottom:3px")= tag
             P
                 each product in products 
                     H3(style="border-color:lightgray;border-width:thin;border-style:solid;width:370px;padding-top:10px")= product.name

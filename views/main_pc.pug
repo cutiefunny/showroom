@@ -7,8 +7,13 @@ html
         link(rel='stylesheet', href='/views/css/main.css')
     body
         center
-            img(src="/images/title.png" width="350px" style="padding-top:20px;padding-bottom:30px")
+            img(src="/images/title.png" width="350px" style="padding-top:20px;padding-bottom:10px")
             P
+            each tag in tags 
+                if tag==="전체"
+                    button.mini.ui.green.button(style="margin-bottom:3px")= tag
+                else
+                    button.mini.ui.button(style="margin-bottom:3px")= tag
             - var cnt=0;
             table
                 tr
