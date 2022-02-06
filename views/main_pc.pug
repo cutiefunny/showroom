@@ -1,0 +1,31 @@
+html 
+    head 
+        title=title 
+        meta(charset="UTF-8")
+        meta(name="viewport", content="width=device-width, initial-scale=1.0")
+        link(rel="stylesheet" href="https://cdn.jsdelivr.net/npm/fomantic-ui@2.8.8/dist/semantic.min.css")
+        link(rel='stylesheet', href='/views/css/main.css')
+    body
+        center
+            img(src="/images/title.png" width="350px" style="padding-top:20px;padding-bottom:30px")
+            P
+            - var cnt=0;
+            table
+                tr
+                each product in products 
+                    if cnt%3===0
+                        tr
+                    td(style="text-align:center")
+                        H3(style="border-color:darkgray;border-width:thin;border-style:solid;width:370px;padding-top:10px")= product.name
+                            div(id=product.name,name="products",onclick="modal(this.id)")
+                            span(style="font-size:11pt;")= product.price
+                                | 원
+                            P
+                    - cnt++
+            .ui.modal 
+                .scrolling.content
+                    #detail
+    script(src="//code.jquery.com/jquery-1.11.0.min.js")
+    script(src="https://cdn.jsdelivr.net/npm/fomantic-ui@2.8.8/dist/semantic.min.js")
+    script(src="/script/main.js")
+    script(src="/script/callAjax.js")
