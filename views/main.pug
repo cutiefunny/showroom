@@ -11,16 +11,17 @@ html
             P
             each tag in tags 
                 if tag==="전체"
-                    button.mini.ui.green.button(style="margin-bottom:3px")= tag
+                    button.mini.ui.green.button(style="margin-bottom:3px" name="tag" id=tag onclick=("clickTag(this.id)"))= tag
                 else
-                    button.mini.ui.button(style="margin-bottom:3px")= tag
+                    button.mini.ui.button(style="margin-bottom:3px" name="tag" id=tag onclick=("clickTag(this.id)"))= tag
             P
                 each product in products 
-                    H3(style="border-color:lightgray;border-width:thin;border-style:solid;width:370px;padding-top:10px")= product.name
-                        div(id=product.name,name="products",onclick="modal(this.id)")
-                        span(style="font-size:11pt;")= product.price
-                            | 원
-                        P
+                    div(name="box" id=product.tag)
+                        H3(style="border-color:lightgray;border-width:thin;border-style:solid;width:370px;padding-top:10px")= product.name
+                            div(id=product.name,name="products",onclick="modal(this.id)")
+                            span(style="font-size:11pt;")= product.price
+                                | 원
+                            P
             .ui.modal 
                 .scrolling.content
                     #detail
