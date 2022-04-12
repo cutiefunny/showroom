@@ -17,7 +17,7 @@ function callAjax(op,msg) {
                 var detail=document.getElementById("detail");
                 detail.setAttribute("style","width:"+ result['fileList'].length*480 +"px");
                 result['fileList'].forEach(file => {
-                    detail.innerHTML += "<img src='/images/"+msg+"/"+file+"' height='400px'>";
+                    detail.innerHTML += "<img src='/images/"+msg+"/"+file+"' width='480px'>";
                 });
             }
         } //function끝
