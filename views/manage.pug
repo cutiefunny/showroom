@@ -8,7 +8,42 @@ html
     body
         center
             H1= title 
+            table
+                tr 
+                    td
+                        button#onOff(onclick="toggle()") 비활성 상품 보이기
+                    td
+                        button#save(onclick="save()") 저장
+                    td
+                        button#create(onclick="create()") 새로 만들기
+            P
+            table 
+                each product in products 
+                        if product.seq===0
+                            tr(name="gray",style="display:none")
+                                td
+                                    input.seq_td.gray(value=product.seq, name=product.seq)
+                                td
+                                    input.name_td.gray(value=product.name, name="name", readonly="true")
+                                td 
+                                    input.price_td.gray(value=product.price, name="price")
+                                td 
+                                    input.name_td.gray(value=product.link, name="link")
+                                td
+                                    button(style="display:none", name="saveButton(this.id)", id=product.seq) 저장
+                        else
+                            tr(style="display:block")
+                                td
+                                    input.seq_td(value=product.seq, name=product.seq)
+                                td
+                                    input.name_td(value=product.name, name="name", readonly="true")
+                                td 
+                                    input.price_td(value=product.price, name="price")
+                                td 
+                                    input.name_td(value=product.link, name="link")
+                                td
+                                    button(style="display:none", name="saveButton(this.id)", id=product.seq) 저장
     script(src="//code.jquery.com/jquery-1.11.0.min.js")
     script(src="https://cdn.jsdelivr.net/npm/fomantic-ui@2.8.8/dist/semantic.min.js")
-    script(src="/script/main.js")
+    script(src="/script/manage.js")
     script(src="/script/callAjax.js")

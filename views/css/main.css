@@ -16,6 +16,10 @@
   font-weight: bold;
 }
 
+.gray{
+  color:lightgray;
+}
+
 .big{
   font-weight: bold;
   font-size: x-large;
@@ -68,4 +72,16 @@ th{
   .disappear {
     animation: fade-out 1s;
     animation-fill-mode: forwards;
+  }
+
+  .name_td{
+    width : 350px;
+  }
+
+  .price_td{
+    width : 100px;
+  }
+
+  .seq_td{
+    width : 50px;
   }
