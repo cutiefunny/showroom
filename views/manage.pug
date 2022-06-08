@@ -22,27 +22,23 @@ html
                         if product.seq===0
                             tr(name="gray",style="display:none")
                                 td
-                                    input.seq_td.gray(value=product.seq, name=product.seq)
+                                    input.seq_td.gray(value=product.seq, name="seq")
                                 td
                                     input.name_td.gray(value=product.name, name="name", readonly="true")
                                 td 
                                     input.price_td.gray(value=product.price, name="price")
                                 td 
                                     input.name_td.gray(value=product.link, name="link")
-                                td
-                                    button(style="display:none", name="saveButton(this.id)", id=product.seq) 저장
                         else
                             tr(style="display:block")
                                 td
-                                    input.seq_td(value=product.seq, name=product.seq)
+                                    input.seq_td(value=product.seq, name="seq")
                                 td
                                     input.name_td(value=product.name, name="name", readonly="true")
                                 td 
                                     input.price_td(value=product.price, name="price")
                                 td 
                                     input.name_td(value=product.link, name="link")
-                                td
-                                    button(style="display:none", name="saveButton(this.id)", id=product.seq) 저장
     script(src="//code.jquery.com/jquery-1.11.0.min.js")
     script(src="https://cdn.jsdelivr.net/npm/fomantic-ui@2.8.8/dist/semantic.min.js")
     script(src="/script/manage.js")

@@ -14,5 +14,11 @@ exports.controller = function(req,res,next) {
             res.send({result:req.body.op
                 ,fileList:fileList});
         });
+    }else if(req.body.op=="updateValue"){
+        console.log("updateValue : " + req.body.msg.seq + req.body.msg.name + req.body.msg.price);
+        var filter = { name : req.body.msg.name};
+        var doc = { $set: { seq : req.body.msg.seq, price : req.body.msg.price } };    
+        userList.updateOne(filter,doc,{upsert:true});
+        res.send({result:req.body.op});
     }
 }

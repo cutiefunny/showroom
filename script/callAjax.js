@@ -19,6 +19,14 @@ function callAjax(op,msg) {
                 result['fileList'].forEach(file => {
                     detail.innerHTML += "<img src='/images/"+msg+"/"+file+"' width='480px'>";
                 });
+            }else if( result['result'] == "getDetail" ) { 
+                var detail=document.getElementById("detail");
+                detail.setAttribute("style","width:"+ result['fileList'].length*480 +"px");
+                result['fileList'].forEach(file => {
+                    detail.innerHTML += "<img src='/images/"+msg+"/"+file+"' width='480px'>";
+                });
+            }else if( result['result'] == "updateValue" ) {
+                
             }
         } //function끝
     }).done(function(response) {

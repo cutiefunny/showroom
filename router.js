@@ -42,7 +42,6 @@ exports.manage = function(req,res) {
     CRUD.searchData("getAll","products").then(products=>{
 
         var target="manage";
-        console.log("manage / "+products);
         res.render(target, { 
             title: '상품관리'
             , products : products
