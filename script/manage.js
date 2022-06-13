@@ -74,3 +74,29 @@ function update(name,seq,price){
 function change(obj){
     obj.setAttribute("value",obj.value);
 }
+
+function sortSeq(){
+    var seqAfter = 10;
+    var seqValAfter = [];
+    var priceValAfter = [];
+    seq = document.getElementsByName("seq");
+    price = document.getElementsByName("price");
+
+    //변경된 입력값을 배열에 담는다
+    seq.forEach(val =>{
+        seqValAfter.push(val.getAttribute("value"));
+    });
+    console.log(document.getElementsByName("seq")[12].getAttribute("value"));
+    price.forEach(val =>{
+        priceValAfter.push(val.getAttribute("value"));
+    });
+
+    for(i=0;i<seq.length;i++){
+            if(seqValAfter[i]>0) {
+                update(nameVal[i],seqAfter,priceValAfter[i]);
+                seqAfter += 10;
+            }
+        }
+    
+    alert("sort complete");
+}
