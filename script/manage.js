@@ -49,6 +49,7 @@ function save(){
     seq.forEach(val =>{
         seqValAfter.push(val.getAttribute("value"));
     });
+    console.log(document.getElementsByName("seq")[12].getAttribute("value"));
     price.forEach(val =>{
         priceValAfter.push(val.getAttribute("value"));
     });
@@ -68,4 +69,8 @@ function save(){
 
 function update(name,seq,price){
     callAjax("updateValue",{name:name,seq:seq,price:price}) 
+}
+
+function change(obj){
+    obj.setAttribute("value",obj.value);
 }

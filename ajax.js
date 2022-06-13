@@ -1,4 +1,5 @@
 const fs = require('fs');
+const CRUD= require("./CRUD");
 
 exports.controller = function(req,res,next) {
     
@@ -15,10 +16,9 @@ exports.controller = function(req,res,next) {
                 ,fileList:fileList});
         });
     }else if(req.body.op=="updateValue"){
-        console.log("updateValue : " + req.body.msg.seq + req.body.msg.name + req.body.msg.price);
-        var filter = { name : req.body.msg.name};
-        var doc = { $set: { seq : req.body.msg.seq, price : req.body.msg.price } };    
-        userList.updateOne(filter,doc,{upsert:true});
+        var filter = { name : req.body.name};
+        var doc = { $set: { seq : parseInt(req.body.seq), price : req.body.price } };    
+        CRUD.updateData(req.body.op,"products",filter,doc);
         res.send({result:req.body.op});
     }
 }

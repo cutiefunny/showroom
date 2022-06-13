@@ -1,6 +1,6 @@
 //Ajax 함수
 function callAjax(op,msg) {
-
+    console.log(msg,op);
     $.ajax({
         url: '/ajax',
         dataType: 'json',
@@ -8,6 +8,9 @@ function callAjax(op,msg) {
         data: { 
             msg : msg
             , op : op
+            , seq : msg.seq
+            , name : msg.name
+            , price : msg.price
         },
         success: function(result) {
             if ( result['result'] == "getImage" ) { 
@@ -26,7 +29,6 @@ function callAjax(op,msg) {
                     detail.innerHTML += "<img src='/images/"+msg+"/"+file+"' width='480px'>";
                 });
             }else if( result['result'] == "updateValue" ) {
-                
             }
         } //function끝
     }).done(function(response) {
