@@ -11,6 +11,7 @@ function callAjax(op,msg) {
             , seq : msg.seq
             , name : msg.name
             , price : msg.price
+            , link : msg.link
         },
         success: function(result) {
             if ( result['result'] == "getImage" ) { 

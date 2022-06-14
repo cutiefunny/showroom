@@ -17,7 +17,7 @@ exports.controller = function(req,res,next) {
         });
     }else if(req.body.op=="updateValue"){
         var filter = { name : req.body.name};
-        var doc = { $set: { seq : parseInt(req.body.seq), price : req.body.price } };    
+        var doc = { $set: { seq : parseInt(req.body.seq), price : req.body.price , link : req.body.link } };    
         CRUD.updateData(req.body.op,"products",filter,doc);
         res.send({result:req.body.op});
     }
