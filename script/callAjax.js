@@ -12,8 +12,8 @@ function callAjax(op,msg) {
         success: function(result) {
             if ( result['result'] == "getImage" ) { 
                 var product=document.getElementById(msg);
-                console.log(msg);
                 product.innerHTML += "<img src='/images/"+msg+"/"+result['image']+"' width='350px' style='margin:5px'>";
+                cnt++;
             }else if( result['result'] == "getDetail" ) { 
                 var detail=document.getElementById("detail");
                 detail.setAttribute("style","width:"+ result['fileList'].length*480 +"px");
