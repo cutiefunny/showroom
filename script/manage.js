@@ -77,7 +77,7 @@ function save(){
 }
 
 function update(name,seq,price,link){
-    callAjax("updateValue",{name:name,seq:seq,price:price,link:link}) 
+    callAjaxManage("updateValue",{name:name,seq:seq,price:price,link:link}) 
 }
 
 function change(obj){
