@@ -39,5 +39,10 @@ function clickTag(id){
 }
 
 function goCat(){
-    document.getElementById("title").setAttribute("src","");
+    var title = document.getElementById("title");
+    if(title.getAttribute("src")=="/images/1.png") title.setAttribute("src","/images/2.png");
+    else if(title.getAttribute("src")=="/images/2.png") title.setAttribute("src","/images/3.png");
+    else if(title.getAttribute("src")=="/images/3.png") title.setAttribute("src","/images/4.png");
+    else if(title.getAttribute("src")=="/images/4.png") title.setAttribute("src","/images/5.png");
+    else if(title.getAttribute("src")=="/images/5.png") title.setAttribute("src","/images/1.png");
 }
