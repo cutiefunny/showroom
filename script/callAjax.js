@@ -12,7 +12,7 @@ function callAjax(op,msg) {
         success: function(result) {
             if ( result['result'] == "getImage" ) { 
                 var product=document.getElementById(msg);
-                product.innerHTML += "<img src='/images/"+msg+"/"+result['image']+"' width='350px' style='margin:5px'>";
+                product.innerHTML += "<img src='/images/"+msg+"/"+result['image']+"' style='width:95%'>";
                 cnt++;
             }else if( result['result'] == "getDetail" ) { 
                 var detail=document.getElementById("detail");
@@ -21,6 +21,7 @@ function callAjax(op,msg) {
                     detail.innerHTML += "<img src='/images/"+msg+"/"+file+"' width='480px'>";
                 });
             }
+
         } //function끝
     }).done(function(response) {
         //alert("success");

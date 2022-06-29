@@ -37,3 +37,7 @@ function clickTag(id){
         });
     }
 }
+
+function goCat(){
+    document.getElementById("title").setAttribute("src","");
+}

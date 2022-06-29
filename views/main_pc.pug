@@ -21,7 +21,7 @@ html
                     if product.seq!=0
                         if cnt%3===0
                             tr
-                        td(style="text-align:center")
+                        td(style="text-align:center;width:360px;")
                             div(name="box" id=product.tag)
                                 H3(style="border-color:darkgray;border-width:thin;border-style:solid;width:370px;padding-top:10px")= product.name
                                     div(id=product.name,name="products",onclick="modal(this.id)")

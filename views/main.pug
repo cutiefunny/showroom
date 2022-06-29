@@ -7,7 +7,7 @@ html
         link(rel='stylesheet', href='/views/css/main.css')
     body
         center
-            img(src="/images/title.png" width="350px" style="padding-top:20px;padding-bottom:30px")
+            img#title(src="/images/title.png" width="350px" style="padding-top:20px;padding-bottom:30px" onclick="goCat()")
             //- P
             //- each tag in tags 
             //-     if tag==="전체"
@@ -15,16 +15,30 @@ html
             //-     else
             //-         button.mini.ui.button(style="margin-bottom:3px" name="tag" id=tag onclick=("clickTag(this.id)"))= tag
             P
+                //- each product in products 
+                //-     if product.seq!=0
+                //-         div(name="box" id=product.tag)
+                //-             H3(style="border-color:lightgray;border-width:thin;border-style:solid;width:370px;padding-top:10px;margin-bottom:5px")= product.name
+                //-                 div(id=product.name,name="products",onclick="modal(this.id)")
+                //-                 span(style="font-size:11pt;")= product.price
+                //-                 if product.link!=null && product.link!=""
+                //-                     a(href=product.link)
+                //-                         button.ui.mini.brown.button(style="margin-left:5px; margin-bottom:5px;font-size:7pt;" name="link") 구매링크
+                //-                 P
+            - var cnt=0;
+            table
+                tr
                 each product in products 
                     if product.seq!=0
-                        div(name="box" id=product.tag)
-                            H3(style="border-color:lightgray;border-width:thin;border-style:solid;width:370px;padding-top:10px;margin-bottom:5px")= product.name
-                                div(id=product.name,name="products",onclick="modal(this.id)")
-                                span(style="font-size:11pt;")= product.price
-                                if product.link!=null && product.link!=""
-                                    a(href=product.link)
-                                        button.ui.mini.brown.button(style="margin-left:5px; margin-bottom:5px;font-size:7pt;" name="link") 구매링크
-                                P
+                        if cnt%3===0
+                            tr
+                        td(style="text-align:center;width:120px;max-width:100%")
+                            div(name="box" id=product.tag)
+                                H3(style="border-color:darkgray;border-width:thin;border-style:solid;width:120px;padding-top:5px")
+                                    div(id=product.name,name="products",onclick="modal(this.id)")
+                                    span(style="font-size:11pt;")= product.price
+                                    P
+                        - cnt++
             .ui.modal 
                 .scrolling.content
                     #detail
