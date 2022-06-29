@@ -38,8 +38,9 @@ html
                                     div(id=product.name,name="products",onclick="modal(this.id)")
                                     span(style="font-size:10pt;")= product.price
                                     if product.link!=null && product.link!=""
+                                        |  
                                         a(href=product.link)
-                                            button.ui.tertiary.brown.button(style="margin-left:5px; margin-bottom:5px;font-size:7pt;" name="link") 구매링크
+                                            button.ui.tertiary.button(style="margin-left:5px; margin-bottom:5px;font-size:7pt;color:white;background-color: #8b4513;" name="link") 구매
                                     P
                         - cnt++
             .ui.modal 
