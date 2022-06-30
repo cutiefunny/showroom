@@ -8,13 +8,18 @@ html
     body
         center
             img#title(src="/images/1.png" width="350px" style="padding-top:20px;padding-bottom:30px" onclick="getTitle()")
+            #label1(onclick="hide(this)" )
+                .ui.pointing.below.label(style="opacity:50%;") 슬라이드하여 사진 크기를 조절
+            input.slider#slider(type="range" value="5" min="1" max="5" oninput="changeSlider(this.value)")
+            P
+            #label2(onclick="hide(this)")
+                .ui.pointing.below.label(style="opacity:50%;") 제품 클릭 시 구매링크로 이동
             //- P
             //- each tag in tags 
             //-     if tag==="전체"
             //-         button.mini.ui.green.button(style="margin-bottom:3px" name="tag" id=tag onclick=("clickTag(this.id)"))= tag
             //-     else
             //-         button.mini.ui.button(style="margin-bottom:3px" name="tag" id=tag onclick=("clickTag(this.id)"))= tag
-            P
                 //- each product in products 
                 //-     if product.seq!=0
                 //-         div(name="box" id=product.tag)
@@ -25,27 +30,16 @@ html
                 //-                     a(href=product.link)
                 //-                         button.ui.mini.brown.button(style="margin-left:5px; margin-bottom:5px;font-size:7pt;" name="link") 구매링크
                 //-                 P
-            - var cnt=0;
-            table
-                tr
-                each product in products 
-                    if product.seq!=0
-                        if cnt%3===0
-                            tr
-                        td(style="text-align:center;width:120px;max-width:100%")
-                            div(name="box" id=product.tag)
-                                H3(style="border-color:darkgray;border-width:thin;border-style:solid;width:120px;padding-top:5px")
-                                    div(id=product.name,name="products",onclick="modal(this.id)")
-                                    span(style="font-size:10pt;")= product.price
-                                    if product.link!=null && product.link!=""
-                                        |  
-                                        a(href=product.link)
-                                            button.ui.tertiary.button(style="margin-left:5px; margin-bottom:5px;font-size:7pt;color:white;background-color: #8b4513;" name="link") 구매
-                                    P
-                        - cnt++
+
+            each product in products 
+                if product.seq!=0
+                        .step5(id=product.name,name="products",url=product.link,onclick="goLink(this)")
+                            .centered5(name="prices")= product.price
             .ui.modal 
                 .scrolling.content
                     #detail
+            P 
+            button.ui.mini.brown.button(onclick="goOld()") 이전 버전으로 보기
     script(src="//code.jquery.com/jquery-1.11.0.min.js")
     script(src="https://cdn.jsdelivr.net/npm/fomantic-ui@2.8.8/dist/semantic.min.js")
     script(src="/script/main.js")

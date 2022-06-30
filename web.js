@@ -34,6 +34,7 @@ console.log("server started");
 //라우터
 app.get('/', router.main);
 app.get('/manage', router.manage);
+app.get('/old',router.old)
 
 //ajax 컨트롤러
 app.post('/ajax', ajax.controller);

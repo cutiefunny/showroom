@@ -1,0 +1,27 @@
+html 
+    head 
+        title=title 
+        meta(charset="UTF-8")
+        meta(name="viewport", content="width=device-width, initial-scale=1.0")
+        link(rel="stylesheet" href="https://cdn.jsdelivr.net/npm/fomantic-ui@2.8.8/dist/semantic.min.css")
+        link(rel='stylesheet', href='/views/css/main.css')
+    body
+        center
+            img#title(src="/images/1.png" width="350px" style="padding-top:20px;padding-bottom:30px" onclick="getTitle()")
+            each product in products 
+                if product.seq!=0
+                    div(name="box" id=product.tag)
+                        H3(style="border-color:lightgray;border-width:thin;border-style:solid;width:370px;padding-top:10px;margin-bottom:5px")= product.name
+                            div(id=product.name,name="products",onclick="modal(this.id)")
+                            span(style="font-size:11pt;")= product.price
+                            if product.link!=null && product.link!=""
+                                a(href=product.link)
+                                    button.ui.mini.brown.button(style="margin-left:5px; margin-bottom:5px;font-size:7pt;" name="link") 구매링크
+                            P
+            .ui.modal 
+                .scrolling.content
+                    #detail
+    script(src="//code.jquery.com/jquery-1.11.0.min.js")
+    script(src="https://cdn.jsdelivr.net/npm/fomantic-ui@2.8.8/dist/semantic.min.js")
+    script(src="/script/main.js")
+    script(src="/script/callAjax.js")

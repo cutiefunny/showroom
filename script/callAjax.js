@@ -1,6 +1,5 @@
 //Ajax 함수
 function callAjax(op,msg) {
-    console.log(msg,op);
     $.ajax({
         url: '/ajax',
         dataType: 'json',
@@ -12,8 +11,8 @@ function callAjax(op,msg) {
         success: function(result) {
             if ( result['result'] == "getImage" ) { 
                 var product=document.getElementById(msg);
-                product.innerHTML += "<img src='/images/"+msg+"/"+result['image']+"' style='width:95%'>";
-                cnt++;
+                product.innerHTML += "<img src='/images/"+msg+"/"+result['image']+"' style='width:100%'>";
+                //cnt++;
             }else if( result['result'] == "getDetail" ) { 
                 var detail=document.getElementById("detail");
                 detail.setAttribute("style","width:"+ result['fileList'].length*480 +"px");
@@ -31,7 +30,6 @@ function callAjax(op,msg) {
 }
 
 function callAjaxManage(op,msg) {
-    console.log(msg,op);
     $.ajax({
         url: '/ajax',
         dataType: 'json',
