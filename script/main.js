@@ -2,7 +2,7 @@
 window.onload = function(){
     getTitle();
     getImage();
-    setTimeout("hideLabels()",10000);
+    setTimeout("hideLabels()",5000);
 };
 
 $('.ui.slider')

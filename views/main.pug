@@ -33,7 +33,7 @@ html
 
             each product in products 
                 if product.seq!=0
-                        .step5(id=product.name,name="products",url=product.link,onclick="goLink(this)")
+                        .step3(id=product.name,name="products",url=product.link,onclick="goLink(this)")
                             .centered5(name="prices")= product.price
             .ui.modal 
                 .scrolling.content
