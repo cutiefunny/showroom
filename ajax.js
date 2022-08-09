@@ -20,5 +20,10 @@ exports.controller = function(req,res,next) {
         var doc = { $set: { seq : parseInt(req.body.seq), price : req.body.price , link : req.body.link } };    
         CRUD.updateData(req.body.op,"products",filter,doc);
         res.send({result:req.body.op});
+    }else if(req.body.op=="updateStorage"){
+        var filter = { depth2 : req.body.depth2, depth3 : req.body.depth3};
+        var doc = { $set: { Qtty : req.body.Qtty } };    
+        CRUD.updateData(req.body.op,"storage",filter,doc);
+        res.send({result:req.body.op});
     }
 }

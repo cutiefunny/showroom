@@ -52,3 +52,26 @@ function callAjaxManage(op,msg) {
         //alert("fail");
     }); // ------      ajax 끝-----------------
 }
+
+function callAjaxStorage(op,msg) {
+    $.ajax({
+        url: '/ajax',
+        dataType: 'json',
+        type: 'POST',
+        data: { 
+            msg : msg
+            , op : op
+            , depth2 : msg.depth2
+            , depth3 : msg.depth3
+            , Qtty : msg.Qtty
+        },
+        success: function(result) {
+            if( result['result'] == "updateValue" ) {
+            }
+        } //function끝
+    }).done(function(response) {
+        //alert("success");
+    }).fail(function(response, txt, e) {
+        //alert("fail");
+    }); // ------      ajax 끝-----------------
+}

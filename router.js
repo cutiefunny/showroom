@@ -49,6 +49,18 @@ exports.manage = function(req,res) {
     });
 }
 
+exports.storage = function(req,res) {
+
+    CRUD.searchData("getStorage","storage").then(products=>{
+
+        var target="storage";
+        res.render(target, { 
+            title: '재고관리'
+            , products : products
+        });
+    });
+}
+
 exports.old = function(req,res) {
 
     var target="main_old";

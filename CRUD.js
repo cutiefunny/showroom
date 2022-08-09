@@ -7,20 +7,21 @@ const uri =
 const client = new MongoClient(uri);
 client.connect();
 const db = client.db("showroom");
-const collection = db.collection("products");
+//const collection = db.collection("products");
 
 //Read
 exports.searchData = async function (op,col,param){
-    //var collection = db.collection(col);
+    var collection = db.collection(col);
 
     if(op=="getAll") res = await collection.find().sort({seq:1}).toArray();
+    else if(op=="getStorage") res = await collection.find().sort({depth:1}).toArray();
     
     return res;
 }
 
 //Update
 exports.updateData = function (op,col,filter,doc){
-  //var collection = db.collection(col);
+  var collection = db.collection(col);
   collection.updateOne(filter,doc,{upsert:true});
   
   return res;
