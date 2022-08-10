@@ -74,6 +74,9 @@ function showAll(){
 }
 
 function create(op,cnt){
+    $('#newDepth1').val("");
+    $('#newDepth2').val("");
+    $('#newDepth3').val("");
     $('.ui.modal').modal('show');
     if(op>0) {
         $('#newDepth1').val(depth1[cnt].getAttribute("value"));
