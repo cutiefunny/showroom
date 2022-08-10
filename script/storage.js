@@ -51,6 +51,8 @@ function changeValue(op,cnt){
     if(op=="plus") val = parseInt(Qtty[cnt].getAttribute("value"))+1;
     else if(op=="minus" && parseInt(Qtty[cnt].getAttribute("value"))>0) val = parseInt(Qtty[cnt].getAttribute("value"))-1;
     Qtty[cnt].setAttribute("value",val);
+    if(val==QttyVal[cnt]) Qtty[cnt].classList.remove("red");
+    else if(val!=QttyVal[cnt] && !Qtty[cnt].classList.contains("red")) Qtty[cnt].classList.add("red");
 }
 
 function filter(op,val){
