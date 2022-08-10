@@ -14,7 +14,7 @@ exports.searchData = async function (op,col,param){
     var collection = db.collection(col);
 
     if(op=="getAll") res = await collection.find().sort({seq:1}).toArray();
-    else if(op=="getStorage") res = await collection.find().sort({depth:1}).toArray();
+    else if(op=="getStorage") res = await collection.find().sort({depth1:1,depth2:1,depth3:1}).toArray();
     
     return res;
 }
@@ -23,6 +23,14 @@ exports.searchData = async function (op,col,param){
 exports.updateData = function (op,col,filter,doc){
   var collection = db.collection(col);
   collection.updateOne(filter,doc,{upsert:true});
+  
+  return res;
+}
+
+//Create
+exports.createData = function (op,col,doc){
+  var collection = db.collection(col);
+  collection.insertOne(doc);
   
   return res;
 }

@@ -61,12 +61,17 @@ function callAjaxStorage(op,msg) {
         data: { 
             msg : msg
             , op : op
+            , depth1 : msg.depth1
             , depth2 : msg.depth2
             , depth3 : msg.depth3
             , Qtty : msg.Qtty
         },
         success: function(result) {
-            if( result['result'] == "updateValue" ) {
+            if( result['result'] == "updateStorage" ) {
+
+            }else if( result['result'] == "createStorage" ) {
+                alert("create complete");
+                location.reload();
             }
         } //function끝
     }).done(function(response) {

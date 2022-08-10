@@ -11,9 +11,9 @@ html
             table
                 tr 
                     td
-                        button#save(onclick="save()") 저장
+                        button#create(onclick="create()") 추가
                     td
-                        button#create(onclick="create()") 새로 만들기
+                        button#save(onclick="save()") 저장
                     td
                         button#create(onclick="showAll()") show all
             P
@@ -27,11 +27,11 @@ html
                 each product in products 
                     tr(name="row" id="row"+cnt)
                         td
-                            input(style="width:80px" value=product.depth1, name="depth1", readonly="true" onclick="filter('1',this.value)")
+                            input(style="width:80px" value=product.depth1, name="depth1", readonly="true" id=cnt onclick="filter('1',this.value)" ondblclick="create(1,this.id)")
                         td
-                            input(style="width:100px" value=product.depth2, name="depth2", readonly="true" onclick="filter('2',this.value)")
+                            input(style="width:100px" value=product.depth2, name="depth2", readonly="true" id=cnt onclick="filter('2',this.value)" ondblclick="create(2,this.id)")
                         td 
-                            input(style="width:100px" value=product.depth3, name="depth3", readonly="true" onclick="filter('3',this.value)")
+                            input(style="width:100px" value=product.depth3, name="depth3", readonly="true" id=cnt onclick="filter('3',this.value)" ondblclick="create(3,this.id)")
                         td 
                             input(style="width:40px" value=product.Qtty, name="Qtty", onchange="change(this)")
                         td
@@ -41,6 +41,13 @@ html
                                 button.ui.button.mini(value=cnt onclick="changeValue('minus',this.value)")
                                     i.minus.icon.mini
                     - cnt++
+                .ui.modal 
+                    .content
+                        input(style="width:80px" id="newDepth1" placeholder="depth1")
+                        input(style="width:100px" id="newDepth2" placeholder="depth2")
+                        input(style="width:100px" id="newDepth3" placeholder="depth3" onkeyup="if(window.event.keyCode==13){saveNew()}")
+                        button.ui.button.mini(onclick="saveNew()")
+                            i.check.icon.mini
     script(src="//code.jquery.com/jquery-1.11.0.min.js")
     script(src="https://cdn.jsdelivr.net/npm/fomantic-ui@2.8.8/dist/semantic.min.js")
     script(src="/script/storage.js")

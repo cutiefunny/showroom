@@ -39,7 +39,7 @@ function save(){
 }
 
 function update(depth2,depth3,Qtty){
-    callAjaxStorage("updateStorage",{depth2:depth2,depth3:depth3,Qtty:Qtty}) 
+    callAjaxStorage("updateStorage",{depth1:"",depth2:depth2,depth3:depth3,Qtty:Qtty}) 
 }
 
 function change(obj){
@@ -71,4 +71,33 @@ function showAll(){
     row.forEach(tr => {
         tr.classList.remove("hide");
     })
+}
+
+function create(op,cnt){
+    $('.ui.modal').modal('show');
+    if(op>0) {
+        $('#newDepth1').val(depth1[cnt].getAttribute("value"));
+        if(op>1) {
+            $('#newDepth2').val(depth2[cnt].getAttribute("value"));
+            if(op>2) $('#newDepth3').val(depth3[cnt].getAttribute("value"));
+        }
+    }
+}
+
+function saveNew(){
+    var d1 = $('#newDepth1').val();
+    var d2 = $('#newDepth2').val();
+    var d3 = $('#newDepth3').val();
+    var cnt=0;
+    var exist=false;
+    depth1.forEach(obj => {
+        if(obj.getAttribute("value") == d1 && depth2[cnt].getAttribute("value") == d2 && depth3[cnt].getAttribute("value") == d3) {
+            exist=true;
+        }
+        cnt++;
+    });
+    if(exist) alert("already exist!");
+    else {
+        callAjaxStorage("createStorage",{depth1:d1,depth2:d2,depth3:d3,Qtty:0});
+    }
 }
