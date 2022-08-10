@@ -15,22 +15,30 @@ html
                     td
                         button#create(onclick="create()") 새로 만들기
             P
-            table(width="320px") 
+            - var cnt=0
+            table(style="width:400px") 
                 tr
-                    th(width="80px") depth1
-                    th(width="80px") depth2
-                    th(width="80px") depth3 
-                    th(width="80px") 수량
+                    th(style="width:80px") depth1
+                    th(style="width:100px") depth2
+                    th(style="width:100px") depth3 
+                    th(style="width:120px" colspan=2) 수량
                 each product in products 
                     tr
                         td
-                            input(value=product.depth1, name="depth1", readonly="true")
+                            input(style="width:80px" value=product.depth1, name="depth1", readonly="true")
                         td
-                            input(value=product.depth2, name="depth2", readonly="true")
+                            input(style="width:100px" value=product.depth2, name="depth2", readonly="true")
                         td 
-                            input(value=product.depth3, name="depth3", readonly="true")
+                            input(style="width:100px" value=product.depth3, name="depth3", readonly="true")
                         td 
-                            input(value=product.Qtty, name="Qtty", onchange="change(this)")
+                            input(style="width:40px" value=product.Qtty, name="Qtty", onchange="change(this)")
+                        td
+                            .ui.mini.basic.icon.buttons(style="height:24.39px")
+                                button.ui.button.mini(value=cnt onclick="changeValue('plus',this.value)")
+                                    i.plus.icon.mini
+                                button.ui.button.mini(value=cnt onclick="changeValue('minus',this.value)")
+                                    i.minus.icon.mini
+                    - cnt++
     script(src="//code.jquery.com/jquery-1.11.0.min.js")
     script(src="https://cdn.jsdelivr.net/npm/fomantic-ui@2.8.8/dist/semantic.min.js")
     script(src="/script/storage.js")

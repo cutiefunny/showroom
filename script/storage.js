@@ -43,3 +43,10 @@ function update(depth2,depth3,Qtty){
 function change(obj){
     obj.setAttribute("value",obj.value);
 }
+
+function changeValue(op,cnt){
+    var val = 0;
+    if(op=="plus") val = parseInt(Qtty[cnt].getAttribute("value"))+1;
+    else if(op=="minus" && parseInt(Qtty[cnt].getAttribute("value"))>0) val = parseInt(Qtty[cnt].getAttribute("value"))-1;
+    Qtty[cnt].setAttribute("value",val);
+}
