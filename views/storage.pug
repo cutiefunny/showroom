@@ -14,6 +14,8 @@ html
                         button#save(onclick="save()") 저장
                     td
                         button#create(onclick="create()") 새로 만들기
+                    td
+                        button#create(onclick="showAll()") show all
             P
             - var cnt=0
             table(style="width:400px") 
@@ -23,13 +25,13 @@ html
                     th(style="width:100px") depth3 
                     th(style="width:120px" colspan=2) 수량
                 each product in products 
-                    tr
+                    tr(name="row" id="row"+cnt)
                         td
-                            input(style="width:80px" value=product.depth1, name="depth1", readonly="true")
+                            input(style="width:80px" value=product.depth1, name="depth1", readonly="true" onclick="filter('1',this.value)")
                         td
-                            input(style="width:100px" value=product.depth2, name="depth2", readonly="true")
+                            input(style="width:100px" value=product.depth2, name="depth2", readonly="true" onclick="filter('2',this.value)")
                         td 
-                            input(style="width:100px" value=product.depth3, name="depth3", readonly="true")
+                            input(style="width:100px" value=product.depth3, name="depth3", readonly="true" onclick="filter('3',this.value)")
                         td 
                             input(style="width:40px" value=product.Qtty, name="Qtty", onchange="change(this)")
                         td

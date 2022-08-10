@@ -1,6 +1,8 @@
 var Qtty = document.getElementsByName("Qtty");
+var depth1 = document.getElementsByName("depth1");
 var depth2 = document.getElementsByName("depth2");
 var depth3 = document.getElementsByName("depth3");
+var row = document.getElementsByName("row");
 var saveButton = document.getElementsByName("saveButton");
 var QttyVal = [];
 
@@ -49,4 +51,24 @@ function changeValue(op,cnt){
     if(op=="plus") val = parseInt(Qtty[cnt].getAttribute("value"))+1;
     else if(op=="minus" && parseInt(Qtty[cnt].getAttribute("value"))>0) val = parseInt(Qtty[cnt].getAttribute("value"))-1;
     Qtty[cnt].setAttribute("value",val);
+}
+
+function filter(op,val){
+    var objs;
+    var cnt=0;
+    if(op=="1") objs=depth1;
+    else if(op=="2") objs=depth2;
+    else if(op=="3") objs=depth3;
+
+    objs.forEach(obj => {
+        if(obj.getAttribute("value")!=val) row[cnt].classList.add("hide");
+        console.log(obj.getAttribute("value") + " / " + val);
+        cnt++;
+    });
+}
+
+function showAll(){
+    row.forEach(tr => {
+        tr.classList.remove("hide");
+    })
 }
