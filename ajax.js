@@ -29,5 +29,14 @@ exports.controller = function(req,res,next) {
         var doc = { depth1 : req.body.depth1, depth2 : req.body.depth2, depth3 : req.body.depth3, Qtty : 0 };    
         CRUD.createData(req.body.op,"storage",doc);
         res.send({result:req.body.op});
+    }else if(req.body.op=="updateTodo"){
+        var filter = { createTm : req.body.createTm };
+        var doc = { $set: { todo : req.body.todo, stat : req.body.stat, updateTm : req.body.updateTm} };
+        CRUD.updateData(req.body.op,"todo",filter,doc);
+        res.send({result:req.body.op});
+    }else if(req.body.op=="createTodo"){
+        var doc = { createTm : req.body.createTm, todo : req.body.todo, stat : req.body.stat, updateTm : req.body.updateTm };    
+        CRUD.createData(req.body.op,"todo",doc);
+        res.send({result:req.body.op});
     }
 }

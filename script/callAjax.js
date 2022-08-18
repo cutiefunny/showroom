@@ -80,3 +80,31 @@ function callAjaxStorage(op,msg) {
         //alert("fail");
     }); // ------      ajax 끝-----------------
 }
+
+function callAjaxTodo(op,msg) {
+    $.ajax({
+        url: '/ajax',
+        dataType: 'json',
+        type: 'POST',
+        data: { 
+            msg : msg
+            , op : op
+            , createTm : msg.createTm
+            , todo : msg.todo
+            , stat : msg.stat
+            , updateTm : msg.updateTm
+        },
+        success: function(result) {
+            if( result['result'] == "updateTodo" ) {
+
+            }else if( result['result'] == "createTodo" ) {
+                alert("create complete");
+                location.reload();
+            }
+        } //function끝
+    }).done(function(response) {
+        //alert("success");
+    }).fail(function(response, txt, e) {
+        //alert("fail");
+    }); // ------      ajax 끝-----------------
+}
