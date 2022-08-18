@@ -10,13 +10,13 @@ html
             img#title(src="/images/1.png" width="350px" style="padding-top:20px;padding-bottom:30px" onclick="getTitle()")
             #label1(onclick="hide(this)" )
                 .ui.pointing.below.label(style="opacity:50%;") 슬라이드하여 사진 크기를 조절
-            input.slider#slider(type="range" value="5" min="1" max="5" oninput="changeSlider(this.value)")
+            input.slider#slider(type="range" value="3" min="1" max="5" oninput="changeSlider(this.value)")
             P
             #label2(onclick="hide(this)")
                 .ui.pointing.below.label(style="opacity:50%;") 제품 클릭 시 구매링크로 이동
             //- P
             //- each tag in tags 
-            //-     if tag==="전체"
+            //-     if tag==="전체"ghks
             //-         button.mini.ui.green.button(style="margin-bottom:3px" name="tag" id=tag onclick=("clickTag(this.id)"))= tag
             //-     else
             //-         button.mini.ui.button(style="margin-bottom:3px" name="tag" id=tag onclick=("clickTag(this.id)"))= tag
@@ -34,7 +34,7 @@ html
             each product in products 
                 if product.seq!=0
                         .step5(id=product.name,name="products",url=product.link,onclick="goLink(this)")
-                            .centered5(name="prices")= product.price
+                            .centered3(name="prices")= product.price
             .ui.modal 
                 .scrolling.content
                     #detail

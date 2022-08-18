@@ -61,6 +61,18 @@ exports.storage = function(req,res) {
     });
 }
 
+exports.todo = function(req,res) {
+
+    CRUD.searchData("getTodo","todo").then(todoList=>{
+
+        var target="todo";
+        res.render(target, { 
+            title: 'To-do List'
+            , todoList : todoList
+        });
+    });
+}
+
 exports.old = function(req,res) {
 
     var target="main_old";

@@ -1,0 +1,61 @@
+html 
+    head 
+        title=title 
+        meta(charset="UTF-8")
+        meta(name="viewport", content="width=device-width, initial-scale=1.0")
+        link(rel="stylesheet" href="https://cdn.jsdelivr.net/npm/fomantic-ui@2.8.8/dist/semantic.min.css")
+        link(rel='stylesheet', href='/views/css/main.css')
+    body
+        center
+            H1= title 
+            table
+                tr 
+                    td
+                        button#create(onclick="create()") 추가
+                    td
+                        button#save(onclick="save()") 저장
+                    td
+                        button#create(onclick="showAll()") show all
+            P
+            - var cnt=0
+            table(style="width:380px") 
+                tr
+                    th(style="width:90px") 생성시간
+                    th(style="width:220px") 할 일
+                    th(style="width:70px") 상태 
+                each todo in todoList
+                    tr(name="row" id="row"+cnt)
+                        td
+                            input(style="width:90px" value=todo.createTm, name="createTm", readonly="true")
+                        td
+                            input(style="width:220px" value=todo.todo, name="todo")
+                        td 
+                            .ui.dropdown
+                                .text 선택
+                                i.dropdown.icon
+                                .menu
+                                    .item 항시
+                                    .item 예정
+                                    .item 진행
+                                    .item 완료
+                        
+                    - cnt++
+            .ui.dropdown
+                .text 선택
+                i.dropdown.icon
+                .menu
+                    .item 항시
+                    .item 예정
+                    .item 진행
+                    .item 완료
+                //- .ui.modal 
+                //-     .content
+                //-         input(style="width:80px" id="newDepth1" placeholder="depth1")
+                //-         input(style="width:100px" id="newDepth2" placeholder="depth2")
+                //-         input(style="width:100px" id="newDepth3" placeholder="depth3" onkeyup="if(window.event.keyCode==13){saveNew()}")
+                //-         button.ui.button.mini(onclick="saveNew()")
+                //-             i.check.icon.mini
+    script(src="//code.jquery.com/jquery-1.11.0.min.js")
+    script(src="https://cdn.jsdelivr.net/npm/fomantic-ui@2.8.8/dist/semantic.min.js")
+    script(src="/script/todo.js")
+    script(src="/script/callAjax.js")
