@@ -38,5 +38,9 @@ exports.controller = function(req,res,next) {
         var doc = { createTm : req.body.createTm, todo : req.body.todo, stat : req.body.stat, updateTm : req.body.updateTm };    
         CRUD.createData(req.body.op,"todo",doc);
         res.send({result:req.body.op});
+    }else if(req.body.op=="deleteTodo"){
+        var filter = { createTm : req.body.createTm };  
+        CRUD.deleteData(req.body.op,"todo",filter);
+        res.send({result:req.body.op});
     }
 }

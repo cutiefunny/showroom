@@ -35,3 +35,11 @@ exports.createData = function (op,col,doc){
   
   return res;
 }
+
+//Create
+exports.deleteData = function (op,col,doc){
+  var collection = db.collection(col);
+  collection.deleteOne(doc);
+  
+  return res;
+}

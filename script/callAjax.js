@@ -100,6 +100,9 @@ function callAjaxTodo(op,msg) {
             }else if( result['result'] == "createTodo" ) {
                 alert("create complete");
                 location.reload();
+            }else if( result['result'] == "deleteTodo" ) {
+                alert("delete complete");
+                location.reload();
             }
         } //function끝
     }).done(function(response) {

@@ -24,10 +24,7 @@ $('.ui.dropdown')
   .dropdown()
 ;
 
-function select(cnt){
-    selected=cnt;
-    alert(selected);
-}
+function selecting(key){ selected=key; }
 
 function showAll(){
     row.forEach(tr => {
@@ -38,6 +35,10 @@ function showAll(){
 function create(){
     $('#newTodo').val("");
     $('.ui.modal').modal('show');
+}
+
+function del(){
+    if(confirm("삭제하시겠습니까?")) callAjaxTodo("deleteTodo",{createTm:selected});
 }
 
 function saveNew(){
