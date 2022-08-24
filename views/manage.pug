@@ -21,31 +21,36 @@ html
             P
             table 
                 each product in products 
-                        if product.seq===0
-                            tr(name="gray",style="display:none")
-                                td
-                                    input.seq_td.gray(value=product.seq, name="seq", onchange="change(this)")
-                                td
-                                    input.name_td.gray(value=product.name, name="name", readonly="true")
-                                td 
-                                    input.price_td.gray(value=product.price, name="price", onchange="change(this)")
-                                td 
-                                    input.name_td.gray(value=product.link, name="link", onchange="change(this)")
-                        else
-                            tr(style="display:block")
-                                td
-                                    input.seq_td(value=product.seq, name="seq", onchange="change(this)")
-                                td
-                                    input.name_td(value=product.name, name="name", readonly="true")
-                                td 
-                                    input.price_td(value=product.price, name="price", onchange="change(this)")
-                                td 
-                                    input.name_td(value=product.link, name="link", onchange="change(this)")
+                    if product.seq===0
+                        tr(name="gray",style="display:none")
+                            td
+                                input.seq_td.gray(value=product.seq, name="seq", onchange="change(this)")
+                            td
+                                input.name_td.gray(value=product.name, name="name", readonly="true")
+                            td 
+                                input.price_td.gray(value=product.price, name="price", onchange="change(this)")
+                            td 
+                                input.name_td.gray(value=product.link, name="link", onchange="change(this)")
+                            td 
+                                input.name_td.gray(value=product.tag, name="tag", onchange="change(this)")
+                    else
+                        tr(style="display:block")
+                            td
+                                input.seq_td(value=product.seq, name="seq", onchange="change(this)")
+                            td
+                                input.name_td(value=product.name, name="name", readonly="true")
+                            td 
+                                input.price_td(value=product.price, name="price", onchange="change(this)")
+                            td 
+                                input.name_td(value=product.link, name="link", onchange="change(this)")
+                            td 
+                                input.name_td(value=product.tag, name="tag", onchange="change(this)")
             .ui.modal 
                     .content
                         input(style="width:300px" id="newName" placeholder="제품명")
                         input(style="width:100px" id="newPrice" placeholder="가격")
-                        input(style="width:300px" id="newLink" placeholder="링크" onkeyup="if(window.event.keyCode==13){saveNew()}")
+                        input(style="width:100px" id="newLink" placeholder="링크")
+                        input(style="width:200px" id="newTag" placeholder="태그" onkeyup="if(window.event.keyCode==13){saveNew()}")
                         button.ui.button.mini(onclick="saveNew()")
                             i.check.icon.mini
     script(src="//code.jquery.com/jquery-1.11.0.min.js")

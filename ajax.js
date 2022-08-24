@@ -17,11 +17,11 @@ exports.controller = function(req,res,next) {
         });
     }else if(req.body.op=="updateValue"){
         var filter = { name : req.body.name};
-        var doc = { $set: { seq : parseInt(req.body.seq), price : req.body.price , link : req.body.link } };    
+        var doc = { $set: { seq : parseInt(req.body.seq), price : req.body.price , link : req.body.link , tag : req.body.tag} };    
         CRUD.updateData(req.body.op,"products",filter,doc);
         res.send({result:req.body.op});
     }else if(req.body.op=="createManage"){
-        var doc = { seq : parseInt(req.body.seq), name : req.body.name , price : req.body.price , link : req.body.link };    
+        var doc = { seq : parseInt(req.body.seq), name : req.body.name , price : req.body.price , link : req.body.link , tag : req.body.tag };    
         CRUD.createData(req.body.op,"products",doc);
         res.send({result:req.body.op});
     }else if(req.body.op=="updateStorage"){

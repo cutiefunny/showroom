@@ -41,6 +41,7 @@ function callAjaxManage(op,msg) {
             , name : msg.name
             , price : msg.price
             , link : msg.link
+            , tag : msg.tag
         },
         success: function(result) {
             if( result['result'] == "updateValue" ) {
