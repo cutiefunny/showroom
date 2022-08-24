@@ -20,6 +20,10 @@ exports.controller = function(req,res,next) {
         var doc = { $set: { seq : parseInt(req.body.seq), price : req.body.price , link : req.body.link } };    
         CRUD.updateData(req.body.op,"products",filter,doc);
         res.send({result:req.body.op});
+    }else if(req.body.op=="createManage"){
+        var doc = { seq : parseInt(req.body.seq), name : req.body.name , price : req.body.price , link : req.body.link };    
+        CRUD.createData(req.body.op,"products",doc);
+        res.send({result:req.body.op});
     }else if(req.body.op=="updateStorage"){
         var filter = { depth2 : req.body.depth2, depth3 : req.body.depth3};
         var doc = { $set: { Qtty : req.body.Qtty } };    
@@ -33,6 +37,7 @@ exports.controller = function(req,res,next) {
         var filter = { createTm : req.body.createTm };
         var doc = { $set: { todo : req.body.todo, stat : req.body.stat, updateTm : req.body.updateTm} };
         CRUD.updateData(req.body.op,"todo",filter,doc);
+        
         res.send({result:req.body.op});
     }else if(req.body.op=="createTodo"){
         var doc = { createTm : req.body.createTm, todo : req.body.todo, stat : req.body.stat, updateTm : req.body.updateTm };    

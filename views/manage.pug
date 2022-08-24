@@ -41,6 +41,13 @@ html
                                     input.price_td(value=product.price, name="price", onchange="change(this)")
                                 td 
                                     input.name_td(value=product.link, name="link", onchange="change(this)")
+            .ui.modal 
+                    .content
+                        input(style="width:300px" id="newName" placeholder="제품명")
+                        input(style="width:100px" id="newPrice" placeholder="가격")
+                        input(style="width:300px" id="newLink" placeholder="링크" onkeyup="if(window.event.keyCode==13){saveNew()}")
+                        button.ui.button.mini(onclick="saveNew()")
+                            i.check.icon.mini
     script(src="//code.jquery.com/jquery-1.11.0.min.js")
     script(src="https://cdn.jsdelivr.net/npm/fomantic-ui@2.8.8/dist/semantic.min.js")
     script(src="/script/manage.js")

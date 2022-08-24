@@ -44,6 +44,9 @@ function callAjaxManage(op,msg) {
         },
         success: function(result) {
             if( result['result'] == "updateValue" ) {
+            }else if( result['result'] == "createManage" ) {
+                alert("create complete");
+                location.reload();
             }
         } //function끝
     }).done(function(response) {

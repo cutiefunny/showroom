@@ -97,7 +97,7 @@ function saveNew(){
     var exist=false;
     depth1.forEach(obj => {
         if(obj.getAttribute("value") == d1 && depth2[cnt].getAttribute("value") == d2 && depth3[cnt].getAttribute("value") == d3) {
-            exist=true;ghks
+            exist=true;
         }
         cnt++;
     });

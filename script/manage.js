@@ -113,3 +113,28 @@ function sortSeq(){
     
     alert("sort complete");
 }
+
+function create(op,cnt){
+    $('#newName').val("");
+    $('#newPrice').val("");
+    $('#newLink').val("");
+    $('.ui.modal').modal('show');
+}
+
+function saveNew(){
+    var d1 = $('#newName').val();
+    var d2 = $('#newPrice').val();
+    var d3 = $('#newLink').val();
+    var cnt=0;
+    var exist=false;
+    name2.forEach(obj => {
+        if(obj.getAttribute("value") == d1) {
+            exist=true;
+        }
+        cnt++;
+    });
+    if(exist) alert("already exist!");
+    else {
+        callAjaxManage("createManage",{name:d1,price:d2,link:d3,seq:11});
+    }
+}
