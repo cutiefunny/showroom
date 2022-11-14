@@ -16,7 +16,7 @@ html
                 .ui.pointing.below.label(style="opacity:50%;") 제품 클릭 시 구매링크로 이동
             //- P
             //- each tag in tags 
-            //-     if tag==="전체"ghks
+            //-     if tag==="전체"
             //-         button.mini.ui.green.button(style="margin-bottom:3px" name="tag" id=tag onclick=("clickTag(this.id)"))= tag
             //-     else
             //-         button.mini.ui.button(style="margin-bottom:3px" name="tag" id=tag onclick=("clickTag(this.id)"))= tag
@@ -33,8 +33,9 @@ html
 
             each product in products 
                 if product.seq!=0
-                        .step3(id=product.name,name="products",url=product.link,onclick="goLink(this)")
-                            .centered3(name="prices")= product.price
+                    .step3(id=product.name,name="products",url=product.link,onclick="goLink(this)")
+                        .centered3(name="prices")= product.price 
+                        .hide(name="tag" value=product.tag)
             .ui.modal 
                 .scrolling.content
                     #detail

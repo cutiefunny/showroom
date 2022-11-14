@@ -5,6 +5,7 @@ exports.main = function(req,res) {
 
     var MobileDetect = require('mobile-detect'),
     md = new MobileDetect(req.headers['user-agent']);
+    console.log(req.query.id);
     
     //pc/mobile 구분
     var target="main";
@@ -18,7 +19,7 @@ exports.main = function(req,res) {
         //         if(!tags.includes(t)) tags.push(t);
         //     });
         // });
-        console.log(products);
+        //console.log(products);
         res.render(target, { 
             title: '근육고양이 잡화점'
             , products : products
