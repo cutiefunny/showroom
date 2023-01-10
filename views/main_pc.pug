@@ -25,10 +25,10 @@ html
                                 H3(style="border-color:darkgray;border-width:thin;border-style:solid;width:370px;padding-top:10px")= product.name
                                     div(id=product.name,name="products",onclick="modal(this.id)")
                                     span(style="font-size:11pt;")= product.price
-                                    if product.link!=null && product.link!=""
-                                        a(href=product.link)
-                                            button.ui.mini.brown.button(style="margin-left:5px; margin-bottom:5px;font-size:7pt;" name="link") 구매링크
-                                    P
+                                    //- if product.link!=null && product.link!=""
+                                    //-     a(href=product.link)
+                                    //-         button.ui.mini.brown.button(style="margin-left:5px; margin-bottom:5px;font-size:7pt;" name="link") 구매링크
+                                    //- P
                         - cnt++
             .ui.modal 
                 .scrolling.content
