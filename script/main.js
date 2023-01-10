@@ -26,7 +26,7 @@ function getImage(){
 function modal(product){
     $('.ui.modal').modal('show');
     document.getElementById("detail").innerHTML="";
-    callAjax("getDetail",product);
+    callAjax("getDetail",product.getAttribute("id"));
 }
 
 function clickTag(id){
@@ -69,9 +69,9 @@ function changeSlider(val){
 }
 
 function goLink(obj){
-    var url=obj.getAttribute("url");
-    if(url==null || url=="") alert("이 제품은 매장에서만 판매합니다.");
-    else window.open(url);
+    // var url=obj.getAttribute("url");
+    // if(url==null || url=="") alert("이 제품은 매장에서만 판매합니다.");
+    // else window.open(url);
 }
 
 function goOld(){
