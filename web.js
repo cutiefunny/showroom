@@ -19,7 +19,7 @@ app.set('views', __dirname + '/views');
 app.use('/script',express.static(__dirname + "/script"));
 app.use('/views',express.static(__dirname + "/views"));
 app.use('/images',express.static(__dirname + "/images"));
-app.use('/uploads',express.static(__dirname + "/uploads"));
+app.use('/images/test',express.static(__dirname + "/uploads/test"));
 app.use(bodyparser.urlencoded({extended:false}))
 app.use(bodyparser.json());
 // 파일 업로드 허용
