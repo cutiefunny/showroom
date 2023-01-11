@@ -45,7 +45,7 @@ app.post('/upload', async (req, res) => {
             });
         } else {
             let f = req.files.uploadFile;
-            f.mv('./uploads/' + f.name);
+            f.mv('./upload/' + f.name);
             res.send({
                 status: true,
                 message: '파일이 업로드 되었습니다.',
