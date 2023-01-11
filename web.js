@@ -19,7 +19,7 @@ app.set('views', __dirname + '/views');
 app.use('/script',express.static(__dirname + "/script"));
 app.use('/views',express.static(__dirname + "/views"));
 app.use('/images',express.static(__dirname + "/images"));
-app.use('/images/test',express.static(__dirname + "/uploads/test"));
+app.use('/uploads',express.static(__dirname + "/uploads"));
 app.use(bodyparser.urlencoded({extended:false}))
 app.use(bodyparser.json());
 // 파일 업로드 허용
@@ -45,7 +45,7 @@ app.post('/upload', async (req, res) => {
             });
         } else {
             let f = req.files.uploadFile;
-            f.mv('./images/test/' + f.name);
+            f.mv('./uploads/' + f.name);
             res.send({
                 status: true,
                 message: '파일이 업로드 되었습니다.',
