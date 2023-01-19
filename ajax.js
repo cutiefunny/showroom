@@ -49,7 +49,3 @@ exports.controller = function(req,res,next) {
         res.send({result:req.body.op});
     }
 }
-
-exports.resize = function(req,res,next) {
-    console.log();
-}

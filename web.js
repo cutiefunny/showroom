@@ -19,9 +19,9 @@ app.use('/images',express.static(__dirname + "/images"));
 app.use(bodyparser.urlencoded({extended:false}))
 app.use(bodyparser.json());
 
-var Jimp = require('jimp');
-var multer = require('multer'); // express에 multer모듈 적용 (for 파일업로드)
-var upload = multer({ dest: 'images/test/' })
+// var Jimp = require('jimp');
+// var multer = require('multer'); // express에 multer모듈 적용 (for 파일업로드)
+// var upload = multer({ dest: 'images/test/' })
 
 //imgur
 // clientID : ff70f4ca94ef095
@@ -48,19 +48,18 @@ app.get('/todo',router.todo)
 
 //ajax 컨트롤러
 app.post('/ajax', ajax.controller);
-app.post('/imageResize', ajax.resize);
-app.post('/upload', upload.single('userfile'), function(req, res){
-    //res.send('Uploaded! : '+req.file); // object를 리턴함
-    console.log(req.file.filename); // 콘솔(터미널)을 통해서 req.file Object 내용 확인 가능.
-    Jimp.read(req.file.path)
-        .then(file => {
-            return file
-            .resize(640, Jimp.AUTO) // resize
-            .quality(100) // set JPEG quality
-            .write('images/test/small2.jpg'); // save
-        })
-        .catch(err => {
-            console.error(err);
-        });
-  });
+// app.post('/upload', upload.single('userfile'), function(req, res){
+//     //res.send('Uploaded! : '+req.file); // object를 리턴함
+//     console.log(req.file.filename); // 콘솔(터미널)을 통해서 req.file Object 내용 확인 가능.
+//     Jimp.read(req.file.path)
+//         .then(file => {
+//             return file
+//             .resize(640, Jimp.AUTO) // resize
+//             .quality(100) // set JPEG quality
+//             .write('images/test/small2.jpg'); // save
+//         })
+//         .catch(err => {
+//             console.error(err);
+//         });
+//   });
 //#endregion
