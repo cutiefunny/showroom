@@ -115,3 +115,27 @@ function callAjaxTodo(op,msg) {
         //alert("fail");
     }); // ------      ajax 끝-----------------
 }
+
+function callAjaxImageResize(img) {
+
+	var formData = new FormData();
+    formData.append('userfile', img);
+
+    $.ajax({
+        enctype: 'multipart/form-data',
+        data: formData,
+        url: '/upload',
+        type: 'POST',
+        processData: false,
+        contentType: false,
+        cache: false,
+        timeout: 600000,
+        success: function(result) {
+
+        } //function끝
+    }).done(function(response) {
+        //alert("success");
+    }).fail(function(response, txt, e) {
+        //alert("fail");
+    }); // ------      ajax 끝-----------------
+}

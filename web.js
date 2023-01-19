@@ -5,9 +5,6 @@ const http = require('https');
 const path = require('path');
 const moment = require('moment');
 const bodyparser= require('body-parser');
-const fileUpload = require('express-fileupload');
-const cors = require('cors');
-const morgan = require('morgan')
 const router = require('./router');
 const ajax = require('./ajax');
 const CRUD= require("./CRUD");
@@ -22,44 +19,20 @@ app.use('/images',express.static(__dirname + "/images"));
 app.use('/uploads',express.static(__dirname + "/uploads"));
 app.use(bodyparser.urlencoded({extended:false}))
 app.use(bodyparser.json());
-// 파일 업로드 허용
-app.use(fileUpload({
-    createParentPath: true
-}));
-// 미들 웨어 추가
-app.use(cors());
-app.use(morgan('dev'));
+
+var Jimp = require('jimp');
+var multer = require('multer'); // express에 multer모듈 적용 (for 파일업로드)
+var upload = multer({ dest: 'uploads/' })
+
+//imgur
+// clientID : ff70f4ca94ef095
+// clientSecret : e1fd611f43957aa9cc66bf3df034828eaf2f015d
 
 const { response, request } = require('express');
 const { createConnection } = require('net');
 //#endregion
 
 //#region 리스닝 및 라우팅
-
-app.post('/upload', async (req, res) => {
-    try {
-        if (!req.files) {
-            res.send({
-                status: false,
-                message: '파일 업로드 실패'
-            });
-        } else {
-            let f = req.files.uploadFile;
-            f.mv('./uploads/' + f.name);
-            res.send({
-                status: true,
-                message: '파일이 업로드 되었습니다.',
-                data: {
-                    name: f.name,
-                    minetype: f.minetype,
-                    size: f.size
-                }
-            });
-        }
-    } catch (err) {
-        res.status(500).send(err);
-    }
-})
 
 //리스닝
 app.listen(port, ()=>{
@@ -76,5 +49,19 @@ app.get('/todo',router.todo)
 
 //ajax 컨트롤러
 app.post('/ajax', ajax.controller);
-
+app.post('/imageResize', ajax.resize);
+app.post('/upload', upload.single('userfile'), function(req, res){
+    //res.send('Uploaded! : '+req.file); // object를 리턴함
+    console.log(req.file.filename); // 콘솔(터미널)을 통해서 req.file Object 내용 확인 가능.
+    Jimp.read(req.file.path)
+        .then(file => {
+            return file
+            .resize(640, Jimp.AUTO) // resize
+            .quality(100) // set JPEG quality
+            .write('images/test/small.jpg'); // save
+        })
+        .catch(err => {
+            console.error(err);
+        });
+  });
 //#endregion

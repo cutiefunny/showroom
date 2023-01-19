@@ -78,8 +78,42 @@ function goOld(){
     location.replace("/old");
 }
 
-function hide(obj){ obj.classList.add("hide") }
+// function hide(obj){ obj.classList.add("hide") }
 function hideLabels(){
     document.getElementById("label1").classList.add("hide");
-    document.getElementById("label2").classList.add("hide");
+    //document.getElementById("label2").classList.add("hide");
+}
+
+function test(){
+    var fileInput = document.getElementById("upload");
+    console.log(fileInput.files[0]);
+    callAjaxImageResize(fileInput.files[0]);
+}
+
+function uploadFile() {
+    const fileInput = document.getElementById("upload");
+    const upload = (file) => {
+        if (file && file.size < 5000000) {
+            const formData = new FormData();
+
+            formData.append("image", file);
+            fetch("https://api.imgur.com/3/image", {
+                method: "POST",
+                headers: {
+                    Authorization: "Client-ID ff70f4ca94ef095",
+                    Accept: "application/json",
+                },
+                body: formData,
+            })
+                .then((response) => response.json())
+                .then((response) => {
+                    console.log(response);
+                    // do Something
+                });
+        } else {
+            console.error("파일 용량 초과");
+        }
+    };
+
+    upload(fileInput.files[0]);
 }

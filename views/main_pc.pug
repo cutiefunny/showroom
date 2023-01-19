@@ -7,6 +7,8 @@ html
         link(rel='stylesheet', href='/views/css/main.css')
     body
         center
+            input#upload(type="file")
+            button.ui.button.mini(onclick="test()") upload
             H3 근육고양이 잡화점은 이사 중입니다.
             img#title(src="/images/1.png" width="350px" style="padding-top:20px;padding-bottom:10px" onclick="getTitle()")
             //- each tag in tags 
