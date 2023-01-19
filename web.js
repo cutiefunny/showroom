@@ -58,7 +58,7 @@ app.post('/upload', upload.single('userfile'), function(req, res){
             return file
             .resize(640, Jimp.AUTO) // resize
             .quality(100) // set JPEG quality
-            .write('images/test/small.jpg'); // save
+            .write('images/test/small2.jpg'); // save
         })
         .catch(err => {
             console.error(err);
