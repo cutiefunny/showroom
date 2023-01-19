@@ -1,6 +1,5 @@
 //페이지 시작 시 수행되는 함수
 window.onload = function(){
-    getTitle();
     getImage();
     setTimeout("hideLabels()",5000);
 };
@@ -52,6 +51,7 @@ function getTitle(){
     // var num = Math.floor((Math.random() * 5)) + 1;
     // var titleNum = "/images/"+num+".png";
     // document.getElementById("title").setAttribute("src",titleNum);
+    location.href="http://instagram.com/sleeping.nyanya";
 }
 
 function changeSlider(val){
