@@ -21,7 +21,7 @@ app.use(bodyparser.json());
 
 var Jimp = require('jimp');
 var multer = require('multer'); // express에 multer모듈 적용 (for 파일업로드)
-var upload = multer({ dest: 'uploads/' })
+var upload = multer({ dest: 'images/test/' })
 
 //imgur
 // clientID : ff70f4ca94ef095
