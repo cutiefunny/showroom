@@ -26,6 +26,8 @@ app.use(bodyparser.json());
 //imgur
 // clientID : ff70f4ca94ef095
 // clientSecret : e1fd611f43957aa9cc66bf3df034828eaf2f015d
+// Abstract API
+// primaryKey : 3867691d47e543958ab783fcadc332b2
 
 const { response, request } = require('express');
 const { createConnection } = require('net');
