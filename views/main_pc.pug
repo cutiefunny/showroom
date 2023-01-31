@@ -7,19 +7,11 @@ html
         link(rel='stylesheet', href='/views/css/main.css')
     body
         center
-            H3 근육고양이 잡화점은 이사 중입니다.
-            img#title(src="/images/1.png" width="350px" style="padding-top:20px;padding-bottom:10px" onclick="getTitle()")
-            //- each tag in tags 
-            //-     if tag==="전체"
-            //-         button.mini.ui.green.button(style="margin-bottom:3px" name="tag" id=tag onclick=("clickTag(this.id)"))= tag
-            //-     else
-            //-         button.mini.ui.button(style="margin-bottom:3px" name="tag" id=tag onclick=("clickTag(this.id)"))= tag
+            img#title(src="/images/1.png" width="350px" style="padding-top:20px;padding-bottom:30px" onclick="getTitle()")
+            #label1(onclick="hide(this)" )
+                .ui.pointing.below.label(style="opacity:50%;") 슬라이드하여 사진 크기를 조절
+            input.slider#slider(type="range" value="3" min="1" max="5" oninput="changeSlider(this.value)")
             P
-            a(href="http://instagram.com/sleeping.nyanya" style="font-size:15px;color:brown") 
-                i.instagram.icon
-                |
-                |sleeping.nyanya
-            H3 새로운 장소에서 2월 오픈 예정!
             - var cnt=0;
             table
                 tr

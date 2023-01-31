@@ -48,10 +48,10 @@ function clickTag(id){
 }
 
 function getTitle(){
-    // var num = Math.floor((Math.random() * 5)) + 1;
-    // var titleNum = "/images/"+num+".png";
-    // document.getElementById("title").setAttribute("src",titleNum);
-    location.href="http://instagram.com/sleeping.nyanya";
+    var num = Math.floor((Math.random() * 5)) + 1;
+    var titleNum = "/images/"+num+".png";
+    document.getElementById("title").setAttribute("src",titleNum);
+    //location.href="http://instagram.com/sleeping.nyanya";
 }
 
 function changeSlider(val){
