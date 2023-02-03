@@ -8,9 +8,6 @@ html
     body
         center
             img#title(src="/images/1.png" width="350px" style="padding-top:20px;padding-bottom:30px" onclick="getTitle()")
-            #label1(onclick="hide(this)" )
-                .ui.pointing.below.label(style="opacity:50%;") 슬라이드하여 사진 크기를 조절
-            input.slider#slider(type="range" value="3" min="1" max="5" oninput="changeSlider(this.value)")
             P
             - var cnt=0;
             table
@@ -24,10 +21,10 @@ html
                                 H3(style="border-color:darkgray;border-width:thin;border-style:solid;width:370px;padding-top:10px")= product.name
                                     div(id=product.name,name="products",onclick="modal(this.id)")
                                     span(style="font-size:11pt;")= product.price
-                                    //- if product.link!=null && product.link!=""
-                                    //-     a(href=product.link)
-                                    //-         button.ui.mini.brown.button(style="margin-left:5px; margin-bottom:5px;font-size:7pt;" name="link") 구매링크
-                                    //- P
+                                    if product.link!=null && product.link!=""
+                                        a(href=product.link)
+                                            button.ui.mini.brown.button(style="margin-left:5px; margin-bottom:5px;font-size:7pt;" name="link") 구매링크
+                                    P
                         - cnt++
             .ui.modal 
                 .scrolling.content
