@@ -12,14 +12,18 @@ exports.controller = function(req,res,next) {
     }else if(req.body.op=="getDetail"){
         //console.log("getDetail");
         fs.readdir(__dirname+'/images/'+req.body.msg, function(err,fileList){
-            res.send({result:req.body.op
-                ,fileList:fileList});
+            res.send({result:req.body.op,fileList:fileList});
         });
     }else if(req.body.op=="updateValue"){
         var filter = { name : req.body.name};
         var doc = { $set: { seq : parseInt(req.body.seq), price : req.body.price , link : req.body.link , tag : req.body.tag} };    
         CRUD.updateData(req.body.op,"products",filter,doc);
         res.send({result:req.body.op});
+    }else if(req.body.op=="updateImg"){
+        var filter = { seq : parseInt(req.body.seq)};
+        var doc = { $set: { img : req.body.img} };    
+        CRUD.updateData(req.body.op,"products",filter,doc);
+        res.send({result:req.body.op,img : req.body.img});
     }else if(req.body.op=="createManage"){
         var doc = { seq : parseInt(req.body.seq), name : req.body.name , price : req.body.price , link : req.body.link , tag : req.body.tag };    
         CRUD.createData(req.body.op,"products",doc);

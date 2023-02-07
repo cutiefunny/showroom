@@ -1,6 +1,6 @@
 //페이지 시작 시 수행되는 함수
 window.onload = function(){
-    getImage();
+    //getImage();
     setTimeout("hideLabels()",5000);
 };
 
@@ -69,9 +69,9 @@ function changeSlider(val){
 }
 
 function goLink(obj){
-    // var url=obj.getAttribute("url");
-    // if(url==null || url=="") alert("이 제품은 매장에서만 판매합니다.");
-    // else window.open(url);
+    var url=obj.getAttribute("url");
+    if(url==null || url=="") alert("이 제품은 매장에서만 판매합니다.");
+    else window.open(url);
 }
 
 function goOld(){

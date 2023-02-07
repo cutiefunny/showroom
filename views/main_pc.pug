@@ -20,6 +20,7 @@ html
                             div(name="box" id=product.tag)
                                 H3(style="border-color:darkgray;border-width:thin;border-style:solid;width:370px;padding-top:10px")= product.name
                                     div(id=product.name,name="products",onclick="modal(this.id)")
+                                        img(src=product.img, width="100%")
                                     span(style="font-size:11pt;")= product.price
                                     if product.link!=null && product.link!=""
                                         a(href=product.link)

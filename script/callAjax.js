@@ -42,11 +42,14 @@ function callAjaxManage(op,msg) {
             , price : msg.price
             , link : msg.link
             , tag : msg.tag
+            , img : msg.img
         },
         success: function(result) {
             if( result['result'] == "updateValue" ) {
             }else if( result['result'] == "createManage" ) {
                 alert("create complete");
+                location.reload();
+            }else if( result['result'] == "updateImg" ) {
                 location.reload();
             }
         } //function끝

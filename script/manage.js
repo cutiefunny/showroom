@@ -11,10 +11,12 @@ var nameVal = [];
 var priceVal = [];
 var linkVal = [];
 var tagVal = [];
+var defaultModal;
 
 //페이지 시작 시 수행되는 함수
 window.onload = function(){
     
+    defaultModal = document.getElementById("bigImg").innerHTML;
     //기존의 값들을 배열에 담는다
     seq.forEach(val =>{
         seqVal.push(val.getAttribute("value"));
@@ -130,6 +132,7 @@ function sortSeq(){
 }
 
 function create(op,cnt){
+    document.getElementById("bigImg").innerHTML = defaultModal;
     $('#newName').val("");
     $('#newPrice').val("");
     $('#newLink').val("");
@@ -154,4 +157,39 @@ function saveNew(){
     else {
         callAjaxManage("createManage",{name:d1,price:d2,link:d3,tag:d4,seq:11});
     }
+}
+
+function uploadFile(obj) {
+    var tempSeq =  obj.id.replace("file","");
+    console.log(obj.id + " / " + tempSeq);
+    const fileInput = document.getElementById(obj.id);
+    const upload = (file) => {
+        if (file && file.size < 5000000) {
+            const formData = new FormData();
+
+            formData.append("image", file);
+            fetch("https://api.imgur.com/3/image", {
+                method: "POST",
+                headers: {
+                    Authorization: "Client-ID ff70f4ca94ef095",
+                    Accept: "application/json",
+                },
+                body: formData,
+            })
+                .then((response) => response.json())
+                .then((response) => {
+                    console.log(response.data.link);
+                    callAjaxManage("updateImg",{seq:tempSeq,img:response.data.link}) 
+                });
+        } else {
+            console.error("파일 용량 초과");
+        }
+    };
+
+    upload(fileInput.files[0]);
+}
+
+function clickImg(obj){
+    $('.ui.modal').modal('show');
+    document.getElementById("bigImg").innerHTML = "<img src='"+obj.id+"' width='400px'>";
 }
