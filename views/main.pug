@@ -33,7 +33,7 @@ html
 
             each product in products 
                 if product.seq!=0
-                    .step3(id=product.name,name="products",url=product.link,onclick="modal(this)")
+                    .step3(id=product.name,name="products",url=product.link,onclick="goLink(this)")
                         img(src=product.img, width="100%")
                         .centered3(name="prices")= product.price 
             .ui.modal 
