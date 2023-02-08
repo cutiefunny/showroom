@@ -45,7 +45,7 @@ html
                                 td
                                     img(src=product.img, id=product.img, style="height:30px" onclick="clickImg(this)")
                             td 
-                                input.name_td(type="file", id="file"+product.seq, name="upload", onchange="uploadFile(this)")
+                                input.name_td(type="file", id="file"+product.name, name="upload", onchange="uploadFile(this)")
             .ui.modal 
                     .content
                         #bigImg

@@ -20,7 +20,7 @@ exports.controller = function(req,res,next) {
         CRUD.updateData(req.body.op,"products",filter,doc);
         res.send({result:req.body.op});
     }else if(req.body.op=="updateImg"){
-        var filter = { seq : parseInt(req.body.seq)};
+        var filter = { name : parseInt(req.body.name)};
         var doc = { $set: { img : req.body.img} };    
         CRUD.updateData(req.body.op,"products",filter,doc);
         res.send({result:req.body.op,img : req.body.img});

@@ -160,8 +160,8 @@ function saveNew(){
 }
 
 function uploadFile(obj) {
-    var tempSeq =  obj.id.replace("file","");
-    console.log(obj.id + " / " + tempSeq);
+    var tempName =  obj.id.replace("file","");
+    console.log(obj.id + " / " + tempName);
     const fileInput = document.getElementById(obj.id);
     const upload = (file) => {
         if (file && file.size < 5000000) {
@@ -179,7 +179,7 @@ function uploadFile(obj) {
                 .then((response) => response.json())
                 .then((response) => {
                     console.log(response.data.link);
-                    callAjaxManage("updateImg",{seq:tempSeq,img:response.data.link}) 
+                    callAjaxManage("updateImg",{seq:tempName,img:response.data.link}) 
                 });
         } else {
             console.error("파일 용량 초과");
