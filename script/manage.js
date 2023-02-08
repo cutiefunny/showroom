@@ -179,7 +179,7 @@ function uploadFile(obj) {
                 .then((response) => response.json())
                 .then((response) => {
                     console.log(response.data.link);
-                    callAjaxManage("updateImg",{seq:tempName,img:response.data.link}) 
+                    callAjaxManage("updateImg",{name:tempName,img:response.data.link}) 
                 });
         } else {
             console.error("파일 용량 초과");
