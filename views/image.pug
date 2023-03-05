@@ -13,15 +13,19 @@ html
                     td
                         input.ui.button(type="file", id="uploadImg", name="uploadImg", onchange="uploadFile()")
             P
+            - var cnt=0;
             table 
+                tr
                 each image in images
-                    tr
-                        td(style="text-align: center")
-                             img(src=image.link, id=image.link, style="width:120px" onclick="modal(this)")
-                             br
-                             button.ui.mini.button(id=image.deletehash onclick="deleteFile(this)") 삭제
-                             button.ui.mini.button(id=image.link onclick="copyUrl(this)") url복사
-        .ui.modal
+                    if cnt%3===0
+                        tr
+                    td(style="text-align: center")
+                        img(src=image.link, id=image.link, style="width:120px" onclick="modal(this)")
+                        br
+                        button.ui.mini.button(id=image.deletehash onclick="deleteFile(this)") 삭제
+                        button.ui.mini.button(id=image.link onclick="copyUrl(this)") url복사
+                    - cnt++
+    .ui.modal
             #detail
     script(src="//code.jquery.com/jquery-1.11.0.min.js")
     script(src="https://cdn.jsdelivr.net/npm/fomantic-ui@2.8.8/dist/semantic.min.js")
