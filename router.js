@@ -49,6 +49,18 @@ exports.manage = function(req,res) {
     });
 }
 
+exports.image = function(req,res) {
+
+    CRUD.searchData("getImage","images").then(images=>{
+
+        var target="image";
+        res.render(target, { 
+            title: '이미지관리'
+            , images : images
+        });
+    });
+}
+
 exports.storage = function(req,res) {
 
     CRUD.searchData("getStorage","storage").then(products=>{

@@ -44,6 +44,7 @@ console.log("server started");
 //라우터
 app.get('/', router.main);
 app.get('/manage', router.manage);
+app.get('/image', router.image);
 app.get('/old',router.old)
 app.get('/storage',router.storage)
 app.get('/todo',router.todo)

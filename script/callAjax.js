@@ -60,6 +60,32 @@ function callAjaxManage(op,msg) {
     }); // ------      ajax 끝-----------------
 }
 
+function callAjaxImage(op,msg) {
+    $.ajax({
+        url: '/ajax',
+        dataType: 'json',
+        type: 'POST',
+        data: { 
+            msg : msg
+            , op : op
+            , link : msg.link
+            , deletehash : msg.deletehash
+            , createTm : msg.createTm
+        },
+        success: function(result) {
+            if( result['result'] == "uploadImage" ) {
+                location.reload();
+            }else if( result['result'] == "deleteImage" ) {
+                location.reload();
+            }
+        } //function끝
+    }).done(function(response) {
+        //alert("success");
+    }).fail(function(response, txt, e) {
+        //alert("fail");
+    }); // ------      ajax 끝-----------------
+}
+
 function callAjaxStorage(op,msg) {
     $.ajax({
         url: '/ajax',

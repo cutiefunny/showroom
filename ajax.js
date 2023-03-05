@@ -24,6 +24,14 @@ exports.controller = function(req,res,next) {
         var doc = { $set: { img : req.body.img} };    
         CRUD.updateData(req.body.op,"products",filter,doc);
         res.send({result:req.body.op,img : req.body.img});
+    }else if(req.body.op=="uploadImage"){
+        var doc = { link : req.body.link,deletehash : req.body.deletehash,createTm:req.body.createTm};    
+        CRUD.createData(req.body.op,"images",doc);
+        res.send({result:req.body.op,img : req.body.img});
+    }else if(req.body.op=="deleteImage"){
+        var filter = { deletehash : req.body.deletehash };      
+        CRUD.deleteData(req.body.op,"images",filter);
+        res.send({result:req.body.op});
     }else if(req.body.op=="createManage"){
         var doc = { seq : parseInt(req.body.seq), name : req.body.name , price : req.body.price , link : req.body.link , tag : req.body.tag };    
         CRUD.createData(req.body.op,"products",doc);
