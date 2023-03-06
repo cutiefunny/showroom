@@ -70,6 +70,7 @@ function callAjaxImage(op,msg) {
             , op : op
             , link : msg.link
             , deletehash : msg.deletehash
+            , use : msg.use
             , createTm : msg.createTm
         },
         success: function(result) {

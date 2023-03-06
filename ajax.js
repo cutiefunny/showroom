@@ -25,7 +25,7 @@ exports.controller = function(req,res,next) {
         CRUD.updateData(req.body.op,"products",filter,doc);
         res.send({result:req.body.op,img : req.body.img});
     }else if(req.body.op=="uploadImage"){
-        var doc = { link : req.body.link,deletehash : req.body.deletehash,createTm:req.body.createTm};    
+        var doc = { link : req.body.link,deletehash : req.body.deletehash,use : req.body.use,createTm:req.body.createTm};    
         CRUD.createData(req.body.op,"images",doc);
         res.send({result:req.body.op,img : req.body.img});
     }else if(req.body.op=="deleteImage"){

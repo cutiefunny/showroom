@@ -1,7 +1,7 @@
 //페이지 시작 시 수행되는 함수
 window.onload = function(){
     //getImage();
-    setTimeout("hideLabels()",5000);
+    //setTimeout("hideLabels()",5000);
 };
 
 $('.ui.slider')
@@ -117,3 +117,27 @@ function uploadFile() {
 
     upload(fileInput.files[0]);
 }
+
+const swiper = new Swiper('.swiper', {
+    // Optional parameters
+    direction: 'horizontal',
+    loop: true,
+    slidesPerView: 3,
+    autoHeight : true,
+  
+    // If we need pagination
+    pagination: {
+      el: '.swiper-pagination',
+    },
+  
+    // Navigation arrows
+    navigation: {
+      nextEl: '.swiper-button-next',
+      prevEl: '.swiper-button-prev',
+    },
+  
+    // And if we need scrollbar
+    scrollbar: {
+      el: '.swiper-scrollbar',
+    },
+  });

@@ -12,6 +12,13 @@ html
                 tr 
                     td
                         input.ui.button(type="file", id="uploadImg", name="uploadImg", onchange="uploadFile()")
+                    td
+                        select#use.ui.dropdown
+                            option(value="sel") 일반셀카
+                            option(value="som") 이달셀카
+                            option(value="prod") 제품사진
+                            option(value="day") 일상사진
+                            option(value="etc") 기타
             P
             - var cnt=0;
             table 
@@ -23,7 +30,7 @@ html
                         img(src=image.link, id=image.link, style="width:120px" onclick="modal(this)")
                         br
                         button.ui.mini.button(id=image.deletehash onclick="deleteFile(this)") 삭제
-                        button.ui.mini.button(id=image.link onclick="copyUrl(this)") url
+                        button.ui.mini.button(id=image.link onclick="copyUrl(this)")= image.use
                     - cnt++
     .ui.modal
             #detail

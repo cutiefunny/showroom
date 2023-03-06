@@ -9,6 +9,7 @@ function copyUrl(obj) {
 
 function uploadFile() {
     const fileInput = document.getElementById("uploadImg");
+    var use = document.getElementById("use").value; 
     const upload = (file) => {
         if (file && file.size < 5000000) {
             const formData = new FormData();
@@ -25,7 +26,7 @@ function uploadFile() {
                 .then((response) => response.json())
                 .then((response) => {
                     console.log(response.data);
-                    callAjaxImage("uploadImage",{link:response.data.link,deletehash:response.data.deletehash,createTm:new Date().YYYYMMDDHHMMSS()}) 
+                    callAjaxImage("uploadImage",{link:response.data.link,deletehash:response.data.deletehash,use:use,createTm:new Date().YYYYMMDDHHMMSS()}) 
                 });
         } else {
             console.error("파일 용량 초과");
