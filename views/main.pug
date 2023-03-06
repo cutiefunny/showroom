@@ -8,8 +8,15 @@ html
         link(rel='stylesheet', href='/views/css/main.css')
     body
         center
-            img#title(src="/images/1.png" width="350px" style="padding-top:20px;padding-bottom:30px" onclick="getTitle()")
-            P
+            table(style="position: absolute; left:65px; top:210px;")
+                tr
+                    td
+                        a(href="http://instagram.com/sleeping.nyanya")
+                            img(src="/images/icon/insta.png" height="30px")
+                    td
+                        a(href="http://blog.naver.com/cutiefunny")
+                            img(src="/images/icon/blog.png" height="20px")
+            img#title(src="/images/1.png" width="350px" style="padding-top:20px;padding-bottom:30px;" onclick="getTitle()")
             #label2
                 .ui.pointing.below.label(style="opacity:100%;") 셀카 갤러리 : 최신순으로 20개!
             .swiper
