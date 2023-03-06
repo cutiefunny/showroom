@@ -11,7 +11,7 @@ exports.main = function(req,res) {
     if(!md.mobile()) target="main_pc";
 
     CRUD.searchData("getAll","products").then(products=>{
-        CRUD.searchData("getImage","images").then(images=>{
+        CRUD.searchData("getMainImage","images").then(images=>{
             res.render(target, { 
                 title: '근육고양이 잡화점'
                 , products : products

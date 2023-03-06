@@ -17,6 +17,7 @@ exports.searchData = async function (op,col,param){
     else if(op=="getStorage") res = await collection.find().sort({depth1:1,depth2:1,depth3:1}).toArray();
     else if(op=="getTodo") res = await collection.find().sort({createTm:-1}).toArray();
     else if(op=="getImage") res = await collection.find().sort({createTm:-1}).toArray();
+    else if(op=="getMainImage") res = await collection.find().sort({createTm:-1}).limit(20).toArray();
     
     return res;
 }

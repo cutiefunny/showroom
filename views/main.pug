@@ -10,14 +10,17 @@ html
         center
             img#title(src="/images/1.png" width="350px" style="padding-top:20px;padding-bottom:30px" onclick="getTitle()")
             P
+            #label2
+                .ui.pointing.below.label(style="opacity:100%;") 셀카 갤러리 : 최신순으로 20개!
             .swiper
                 .swiper-wrapper
                     each image in images 
-                        .swiper-slide
-                            img(src=image.link, width="120px")
+                        if image.use==="sel"
+                            .swiper-slide
+                                img(src=image.link, width="100%")
             P
             #label1(onclick="hide(this)" )
-                .ui.pointing.below.label(style="opacity:50%;") 슬라이드하여 사진 크기를 조절
+                .ui.pointing.below.label(style="opacity:100%;") 슬라이드하여 제품사진 크기를 조절
             input.slider#slider(type="range" value="3" min="1" max="5" oninput="changeSlider(this.value)")
             P
             each product in products 
