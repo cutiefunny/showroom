@@ -2,10 +2,10 @@ html
     head 
         title=title 
         meta(charset="UTF-8")
-        meta(name="viewport", content="width=device-width, initial-scale=1.0")
+        meta(name="viewport", content="width=device-width, initial-scale=1.0, user-scalable=no")
         link(rel="stylesheet" href="https://cdn.jsdelivr.net/npm/fomantic-ui@2.8.8/dist/semantic.min.css")
-        link(rel="stylesheet" href="https://unpkg.com/swiper@8/swiper-bundle.min.css")
         link(rel='stylesheet', href='/views/css/main.css')
+        link(rel="stylesheet" href="https://unpkg.com/swiper@8/swiper-bundle.min.css")
     body
         center
             table(style="position: absolute; left:65px; top:210px;")
@@ -28,7 +28,7 @@ html
             P
             #label3
                 .ui.pointing.below.label(style="opacity:100%;") 아무말 갤러리
-            .swiper
+            .swiper2
                 .swiper-wrapper
                     each image in images 
                         if image.use==="bod"

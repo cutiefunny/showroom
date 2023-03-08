@@ -146,7 +146,7 @@ const swiper = new Swiper('.swiper', {
     // Optional parameters
     direction: 'horizontal',
     loop: true,
-    slidesPerView: 2,
+    slidesPerView: 1,
     autoHeight : true,
   
     // If we need pagination
