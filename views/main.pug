@@ -18,11 +18,20 @@ html
                             img(src="/images/icon/blog.png" height="20px")
             img#title(src="/images/1.png" width="350px" style="padding-top:20px;padding-bottom:30px;" onclick="getTitle()")
             #label2
-                .ui.pointing.below.label(style="opacity:100%;") 셀카 갤러리 : 최신순으로 20개!
+                .ui.pointing.below.label(style="opacity:100%;") 셀카 갤러리
             .swiper
                 .swiper-wrapper
                     each image in images 
                         if image.use==="sel"
+                            .swiper-slide
+                                img(src=image.link, width="100%")
+            P
+            #label3
+                .ui.pointing.below.label(style="opacity:100%;") 아무말 갤러리
+            .swiper2
+                .swiper-wrapper
+                    each image in images 
+                        if image.use==="bod"
                             .swiper-slide
                                 img(src=image.link, width="100%")
             P
