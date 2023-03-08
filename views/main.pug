@@ -28,12 +28,9 @@ html
             P
             #label3
                 .ui.pointing.below.label(style="opacity:100%;") 아무말 갤러리
-            .swiper2
-                .swiper-wrapper
-                    each image in images 
-                        if image.use==="bod"
-                            .swiper-slide
-                                img(src=image.link, width="100%")
+            each image in images 
+                if image.use==="bod"
+                    img(src=image.link, width="50%")
             P
             #label1(onclick="hide(this)" )
                 .ui.pointing.below.label(style="opacity:100%;") 슬라이드하여 제품사진 크기를 조절
