@@ -1,3 +1,7 @@
+.swiper2 .swiper-wrapper{
+  transform: translate3d(0,0,0) !important;
+}
+
 .topAlign{
     vertical-align: top;
 }
