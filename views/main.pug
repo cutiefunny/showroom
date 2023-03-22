@@ -17,6 +17,14 @@ html
                         a(href="http://blog.naver.com/cutiefunny")
                             img(src="/images/icon/blog.png" height="20px")
             img#title(src="/images/1.png" width="350px" style="padding-top:20px;padding-bottom:30px;" onclick="getTitle()")
+            #label1 
+                .ui.pointing.below.label(style="opacity:100%;") 분실물
+            .swiper
+                .swiper-wrapper
+                    each image in images 
+                        if image.use==="lost"
+                            .swiper-slide
+                                img(src=image.link, width="100%")
             #label2
                 .ui.pointing.below.label(style="opacity:100%;") 셀카 갤러리
             .swiper
