@@ -29,6 +29,27 @@ function callAjax(op,msg) {
     }); // ------      ajax 끝-----------------
 }
 
+function callAjaxMemo(deviceId,contents,createTm) {
+    $.ajax({
+        url: '/ajax',
+        dataType: 'json',
+        type: 'POST',
+        data: { 
+            op : "saveMemo"
+            , deviceId : deviceId
+            , contents : contents
+            , createTm : createTm
+        },
+        success: function(result) {
+            location.reload();
+        } //function끝
+    }).done(function(response) {
+        //alert("success");
+    }).fail(function(response, txt, e) {
+        //alert("fail");
+    }); // ------      ajax 끝-----------------
+}
+
 function callAjaxManage(op,msg) {
     $.ajax({
         url: '/ajax',

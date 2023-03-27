@@ -2,6 +2,16 @@
 window.onload = function(){
     //getImage();
     //setTimeout("hideLabels()",5000);
+    let randomBrightColor = () => {
+        let color_r = Math.floor(Math.random() * 127 + 64).toString(16);
+        let color_g = Math.floor(Math.random() * 127 + 64).toString(16);
+        let color_b = Math.floor(Math.random() * 127 + 64).toString(16);
+        return `#${color_r+color_g+color_b}`;
+      }
+      
+      for(td of document.getElementsByClassName('visitor')){
+        td.style.color = randomBrightColor();
+      }
 };
 
 $('.ui.slider')
@@ -90,6 +100,10 @@ function test(){
     callAjaxImageResize(fileInput.files[0]);
 }
 
+function saveMemo(){
+    callAjaxMemo($("#deviceId").val(),$("#memo").val(),new Date().YYYYMMDDHHMMSS());
+}
+
 function uploadFile() {
     const fileInput = document.getElementById("upload");
     const upload = (file) => {
@@ -141,3 +155,23 @@ const swiper = new Swiper('.swiper', {
       el: '.swiper-scrollbar',
     },
   });
+
+  //Date format 정리 함수
+Date.prototype.YYYYMMDDHHMMSS = function () {
+    var yyyy = this.getFullYear().toString();
+    var MM = pad(this.getMonth() + 1,2);
+    var dd = pad(this.getDate(), 2);
+    var hh = pad(this.getHours(), 2);
+    var mm = pad(this.getMinutes(), 2)
+    var ss = pad(this.getSeconds(), 2)
+  
+    return yyyy +  MM + dd+  hh + mm + ss;
+  };
+  
+  function pad(number, length) {
+    var str = '' + number;
+    while (str.length < length) {
+      str = '0' + str;
+    }
+    return str;
+  }

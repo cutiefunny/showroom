@@ -59,5 +59,9 @@ exports.controller = function(req,res,next) {
         var filter = { createTm : req.body.createTm };  
         CRUD.deleteData(req.body.op,"todo",filter);
         res.send({result:req.body.op});
+    }else if(req.body.op=="saveMemo"){
+        var doc = { deviceId : req.body.deviceId, contents : req.body.contents, createTm : req.body.createTm };    
+        CRUD.createData(req.body.op,"board",doc);
+        res.send({result:req.body.op});
     }
 }

@@ -195,3 +195,11 @@ input[type=range]::-webkit-slider-thumb {
   font-weight: bold;
   font-size:16px;
 }
+
+.visitor {
+  position : center;
+  color : black;
+  font-weight: bold;
+  font-size:12px;
+  vertical-align: middle;
+}

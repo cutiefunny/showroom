@@ -8,6 +8,7 @@ html
         link(rel="stylesheet" href="https://unpkg.com/swiper@8/swiper-bundle.min.css")
     body
         center
+            input(type="hidden",value=deviceID)
             table(style="position: absolute; left:65px; top:210px;")
                 tr
                     td
@@ -17,6 +18,18 @@ html
                         a(href="http://blog.naver.com/cutiefunny")
                             img(src="/images/icon/blog.png" height="20px")
             img#title(src="/images/1.png" width="350px" style="padding-top:20px;padding-bottom:30px;" onclick="getTitle()")
+            P
+            #label0 
+                .ui.pointing.below.label(style="opacity:100%;") 한줄평
+            .swiper
+                .swiper-wrapper
+                    each memo in memos 
+                        .swiper-slide.visitor= memo.contents
+            P
+            .ui.input.fluid.action
+                input#memo(placeholder="40자 이내의 아무말",maxlength="40")
+                button.ui.button(onclick="saveMemo()") 남기기
+            P
             #label1 
                 .ui.pointing.below.label(style="opacity:100%;") 분실물
             .swiper
@@ -34,12 +47,6 @@ html
                         if image.use==="sel"
                             .swiper-slide
                                 img(src=image.link, width="100%")
-            P
-            #label3
-                .ui.pointing.below.label(style="opacity:100%;") 아무말 갤러리
-            each image in images 
-                if image.use==="bod"
-                    img(src=image.link, width="100%")
             P
             #label1(onclick="hide(this)" )
                 .ui.pointing.below.label(style="opacity:100%;") 슬라이드하여 제품사진 크기를 조절

@@ -1,5 +1,6 @@
 const CRUD= require("./CRUD");
 const fs = require('fs');
+const deviceID = require('node-machine-id');
 
 exports.main = function(req,res) {
 
@@ -12,12 +13,16 @@ exports.main = function(req,res) {
 
     CRUD.searchData("getAll","products").then(products=>{
         CRUD.searchData("getMainImage","images").then(images=>{
-            res.render(target, { 
-                title: '근육고양이 잡화점'
-                , products : products
-                , name : '김냐냐'
-                , images : images
-                , device : md.mobile()
+            CRUD.searchData("getBoard","board").then(memos=>{
+                res.render(target, { 
+                    title: '근육고양이 잡화점'
+                    , products : products
+                    , name : '김냐냐'
+                    , images : images
+                    , device : md.mobile()
+                    , memos : memos
+                    , deviceID : deviceID.machineIdSync()
+                });
             });
         });
     });
