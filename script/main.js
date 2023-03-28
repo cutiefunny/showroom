@@ -1,3 +1,12 @@
+$(".modal").on("shown.bs.modal", function()  {
+    var urlReplace = "#" + $(this).attr('id');
+    history.pushState(null, null, urlReplace);
+});
+
+    $(window).on('popstate', function() {
+    $(".modal").modal('hide');
+});
+
 //페이지 시작 시 수행되는 함수
 window.onload = function(){
     //getImage();
@@ -67,7 +76,6 @@ function getTitle(){
 function changeSlider(val){
     var cls = "step"+val;
     var cls2 = "centered"+val;
-    console.log(cls);
     var imgs = document.getElementsByName("products");
     var prices = document.getElementsByName("prices");
     imgs.forEach(img => {
@@ -88,6 +96,12 @@ function goOld(){
     location.replace("/old");
 }
 
+function clickImage(obj){
+    var imgUrl=obj.getAttribute("src");
+    $('.ui.modal').modal('show');
+    document.getElementById("detail").innerHTML="<img src='"+imgUrl+"' width='100%'>";
+}
+
 // function hide(obj){ obj.classList.add("hide") }
 function hideLabels(){
     document.getElementById("label1").classList.add("hide");
@@ -101,7 +115,8 @@ function test(){
 }
 
 function saveMemo(){
-    callAjaxMemo("saveMemo",new Date().YYYYMMDDHHMMSS(),$("#deviceId").val(),$("#memo").val());
+    if($("#memo").val()) callAjaxMemo("saveMemo",new Date().YYYYMMDDHHMMSS(),$("#deviceId").val(),$("#memo").val());
+    else alert("내용을 입력하시라냥!");
 }
 
 function deleteMemo(obj){

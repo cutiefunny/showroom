@@ -49,7 +49,7 @@ html
                     each image in images 
                         if image.use==="sel"
                             .swiper-slide
-                                img(src=image.link, width="100%")
+                                img(src=image.link, width="100%",onclick="clickImage(this)")
             P
             #label1(onclick="hide(this)" )
                 .ui.pointing.below.label(style="opacity:100%;") 슬라이드하여 제품사진 크기를 조절
@@ -60,7 +60,7 @@ html
                     .step3(id=product.name,name="products",url=product.link,onclick="goLink(this)")
                         img(src=product.img, width="100%")
                         .centered3(name="prices")= product.price 
-            .ui.modal 
+            .ui.modal(tabindex="0") 
                 .scrolling.content
                     #detail
     script(src="//code.jquery.com/jquery-1.11.0.min.js")
