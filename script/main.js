@@ -114,6 +114,17 @@ function test(){
     callAjaxImageResize(fileInput.files[0]);
 }
 
+function clickMemo(obj){
+    var contents=obj.innerText;
+    var color=obj.style.color;
+    console.log(color);
+    $('.ui.modal').modal('show');
+    document.getElementById("detail").innerText=contents;
+    document.getElementById("detail").style.color=color;
+    document.getElementById("detail").style.fontWeight="bold";
+    document.getElementById("detail").style.fontSize="20px";
+}
+
 function saveMemo(){
     if($("#memo").val()) callAjaxMemo("saveMemo",new Date().YYYYMMDDHHMMSS(),$("#deviceId").val(),$("#memo").val());
     else alert("내용을 입력하시라냥!");

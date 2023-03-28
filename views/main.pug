@@ -24,9 +24,9 @@ html
             .swiper
                 .swiper-wrapper
                     each memo in memos 
-                        .swiper-slide.visitor= memo.contents
+                        .swiper-slide
+                            .visitor(onclick="clickMemo(this)")= memo.contents
                             if memo.deviceId===deviceID || deviceID==="5bee79fe6e63b7e26ddec58286a622a975983bee46f96830450de77f1c2c4dc4"
-                                BR
                                 button.ui.mini.button.deleteButton(id=memo.createTm,onclick="deleteMemo(this)") 삭제
             P
             .ui.input.fluid.action
@@ -40,7 +40,7 @@ html
                     each image in images 
                         if image.use==="lost"
                             .swiper-slide
-                                img(src=image.link, width="100%")
+                                img(src=image.link, width="100%",onclick="clickImage(this)")
             P
             #label2
                 .ui.pointing.below.label(style="opacity:100%;") 셀카 갤러리
