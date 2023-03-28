@@ -103,6 +103,7 @@ function clickImage(obj){
 }
 
 function hideLabel(label){
+    $("#"+label).transition('fade down');
     var obj = document.getElementById(label);
     if(obj.classList.contains("hide")) obj.classList.remove("hide");
     else obj.classList.add("hide");
