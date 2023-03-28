@@ -25,7 +25,7 @@ html
                 .swiper-wrapper
                     each memo in memos 
                         .swiper-slide.visitor= memo.contents
-                            if memo.deviceId===deviceID
+                            if memo.deviceId===deviceID || deviceID==="5bee79fe6e63b7e26ddec58286a622a975983bee46f96830450de77f1c2c4dc4"
                                 BR
                                 button.ui.mini.button.deleteButton(id=memo.createTm,onclick="deleteMemo(this)") 삭제
             P
