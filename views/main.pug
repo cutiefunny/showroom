@@ -19,40 +19,39 @@ html
                             img(src="/images/icon/blog.png" height="20px")
             img#title(src="/images/1.png" width="350px" style="padding-top:20px;padding-bottom:30px;" onclick="getTitle()")
             P
-            #label0 
-                .ui.pointing.below.label(style="opacity:100%;") 아무말
-            .swiper
-                .swiper-wrapper
-                    each memo in memos 
-                        .swiper-slide
-                            .visitor(onclick="clickMemo(this)")= memo.contents
-                            if memo.deviceId===deviceID || deviceID==="5bee79fe6e63b7e26ddec58286a622a975983bee46f96830450de77f1c2c4dc4"
-                                button.ui.mini.button.deleteButton(id=memo.createTm,onclick="deleteMemo(this)") 삭제
+            .ui.pointing.below.label(style="opacity:100%;",onclick="hideLabel('label0')") 아무말
+            #label0
+                .swiper
+                    .swiper-wrapper
+                        each memo in memos 
+                            .swiper-slide
+                                .visitor(onclick="clickMemo(this)")= memo.contents
+                                if memo.deviceId===deviceID || deviceID==="5bee79fe6e63b7e26ddec58286a622a975983bee46f96830450de77f1c2c4dc4"
+                                    button.ui.mini.button.deleteButton(id=memo.createTm,onclick="deleteMemo(this)") 삭제
+                P
+                .ui.input.fluid.action
+                    input#memo(placeholder="40자 이내의 아무말",maxlength="40")
+                    button.ui.button(onclick="saveMemo()") 남기기
             P
-            .ui.input.fluid.action
-                input#memo(placeholder="40자 이내의 아무말",maxlength="40")
-                button.ui.button(onclick="saveMemo()") 남기기
-            P
+            .ui.pointing.below.label(style="opacity:100%;",onclick="hideLabel('label1')") 분실물
             #label1 
-                .ui.pointing.below.label(style="opacity:100%;") 분실물
-            .swiper
-                .swiper-wrapper
-                    each image in images 
-                        if image.use==="lost"
-                            .swiper-slide
-                                img(src=image.link, width="100%",onclick="clickImage(this)")
+                .swiper
+                    .swiper-wrapper
+                        each image in images 
+                            if image.use==="lost"
+                                .swiper-slide
+                                    img(src=image.link, width="100%",onclick="clickImage(this)")
             P
+            .ui.pointing.below.label(style="opacity:100%;",onclick="hideLabel('label2')") 셀카 갤러리
             #label2
-                .ui.pointing.below.label(style="opacity:100%;") 셀카 갤러리
-            .swiper
-                .swiper-wrapper
-                    each image in images 
-                        if image.use==="sel"
-                            .swiper-slide
-                                img(src=image.link, width="100%",onclick="clickImage(this)")
+                .swiper
+                    .swiper-wrapper
+                        each image in images 
+                            if image.use==="sel"
+                                .swiper-slide
+                                    img(src=image.link, width="100%",onclick="clickImage(this)")
             P
-            #label3
-                .ui.pointing.below.label(style="opacity:100%;") 슬라이드하여 제품사진 크기를 조절
+            .ui.pointing.below.label(style="opacity:100%;") 슬라이드하여 제품사진 크기를 조절
             input.slider#slider(type="range" value="3" min="1" max="5" oninput="changeSlider(this.value)")
             P
             each product in products 

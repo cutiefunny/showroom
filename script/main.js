@@ -102,10 +102,10 @@ function clickImage(obj){
     document.getElementById("detail").innerHTML="<img src='"+imgUrl+"' width='100%'>";
 }
 
-// function hide(obj){ obj.classList.add("hide") }
-function hideLabel(obj){
-    document.getElementById("label1").classList.add("hide");
-    //document.getElementById("label2").classList.add("hide");
+function hideLabel(label){
+    var obj = document.getElementById(label);
+    if(obj.classList.contains("hide")) obj.classList.remove("hide");
+    else obj.classList.add("hide");
 }
 
 function test(){
