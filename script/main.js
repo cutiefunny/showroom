@@ -101,7 +101,14 @@ function test(){
 }
 
 function saveMemo(){
-    callAjaxMemo($("#deviceId").val(),$("#memo").val(),new Date().YYYYMMDDHHMMSS());
+    callAjaxMemo("saveMemo",new Date().YYYYMMDDHHMMSS(),$("#deviceId").val(),$("#memo").val());
+}
+
+function deleteMemo(obj){
+    if(confirm("삭제하실거냥?")){
+        var createTm = obj.getAttribute("id");
+        callAjaxMemo("deleteMemo",createTm);
+    }
 }
 
 function uploadFile() {

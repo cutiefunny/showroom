@@ -8,7 +8,7 @@ html
         link(rel="stylesheet" href="https://unpkg.com/swiper@8/swiper-bundle.min.css")
     body
         center
-            input(type="hidden",value=deviceID)
+            input#deviceId(type="hidden",value=deviceID)
             table(style="position: absolute; left:65px; top:210px;")
                 tr
                     td
@@ -25,6 +25,9 @@ html
                 .swiper-wrapper
                     each memo in memos 
                         .swiper-slide.visitor= memo.contents
+                            if memo.deviceId===deviceID
+                                BR
+                                button.ui.mini.button.deleteButton(id=memo.createTm,onclick="deleteMemo(this)") 삭제
             P
             .ui.input.fluid.action
                 input#memo(placeholder="40자 이내의 아무말",maxlength="40")

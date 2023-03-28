@@ -49,7 +49,6 @@ exports.controller = function(req,res,next) {
         var filter = { createTm : req.body.createTm };
         var doc = { $set: { todo : req.body.todo, stat : req.body.stat, updateTm : req.body.updateTm} };
         CRUD.updateData(req.body.op,"todo",filter,doc);
-        
         res.send({result:req.body.op});
     }else if(req.body.op=="createTodo"){
         var doc = { createTm : req.body.createTm, todo : req.body.todo, stat : req.body.stat, updateTm : req.body.updateTm };    
@@ -62,6 +61,10 @@ exports.controller = function(req,res,next) {
     }else if(req.body.op=="saveMemo"){
         var doc = { deviceId : req.body.deviceId, contents : req.body.contents, createTm : req.body.createTm };    
         CRUD.createData(req.body.op,"board",doc);
+        res.send({result:req.body.op});
+    }else if(req.body.op=="deleteMemo"){
+        var filter = { createTm : req.body.createTm };   
+        CRUD.deleteData(req.body.op,"board",filter);
         res.send({result:req.body.op});
     }
 }

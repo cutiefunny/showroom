@@ -29,13 +29,13 @@ function callAjax(op,msg) {
     }); // ------      ajax 끝-----------------
 }
 
-function callAjaxMemo(deviceId,contents,createTm) {
+function callAjaxMemo(op,createTm,deviceId,contents) {
     $.ajax({
         url: '/ajax',
         dataType: 'json',
         type: 'POST',
         data: { 
-            op : "saveMemo"
+            op : op
             , deviceId : deviceId
             , contents : contents
             , createTm : createTm
