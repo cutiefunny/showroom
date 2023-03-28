@@ -103,7 +103,7 @@ function clickImage(obj){
 }
 
 // function hide(obj){ obj.classList.add("hide") }
-function hideLabels(){
+function hideLabel(obj){
     document.getElementById("label1").classList.add("hide");
     //document.getElementById("label2").classList.add("hide");
 }
