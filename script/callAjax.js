@@ -127,6 +127,9 @@ function callAjaxStorage(op,msg) {
             }else if( result['result'] == "createStorage" ) {
                 alert("create complete");
                 location.reload();
+            }else if( result['result'] == "deleteStorage" ) {
+                alert("delete complete");
+                location.reload();
             }
         } //function끝
     }).done(function(response) {

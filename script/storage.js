@@ -38,6 +38,12 @@ function save(){
     else alert("there are no modified values");
 }
 
+function del(cnt){
+    if(confirm("삭제하시겠습니까?")) {
+        callAjaxStorage("deleteStorage",{depth2:depth2[cnt].getAttribute("value"),depth3:depth3[cnt].getAttribute("value")});
+    }
+}
+
 function update(depth2,depth3,Qtty){
     callAjaxStorage("updateStorage",{depth1:"",depth2:depth2,depth3:depth3,Qtty:Qtty}) 
 }

@@ -41,6 +41,10 @@ exports.controller = function(req,res,next) {
         var doc = { $set: { Qtty : req.body.Qtty } };    
         CRUD.updateData(req.body.op,"storage",filter,doc);
         res.send({result:req.body.op});
+    }else if(req.body.op=="deleteStorage"){
+        var filter = { depth2 : req.body.depth2, depth3 : req.body.depth3};  
+        CRUD.deleteData(req.body.op,"storage",filter);
+        res.send({result:req.body.op});
     }else if(req.body.op=="createStorage"){
         var doc = { depth1 : req.body.depth1, depth2 : req.body.depth2, depth3 : req.body.depth3, Qtty : 0 };    
         CRUD.createData(req.body.op,"storage",doc);
