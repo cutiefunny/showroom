@@ -207,3 +207,13 @@ input[type=range]::-webkit-slider-thumb {
 .deleteButton {
   opacity: 50%;
 }
+
+.tshirt {
+  position: absolute;
+  top: 32%;
+  left: 22%;
+  color : white;
+  font-weight: bold;
+  font-size:20px;
+  text-align: center;
+}

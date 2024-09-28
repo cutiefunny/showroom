@@ -28,6 +28,38 @@ exports.main = function(req,res) {
     });
 }
 
+exports.khan = function(req,res) {
+    
+    var MobileDetect = require('mobile-detect'),
+    md = new MobileDetect(req.headers['user-agent']);
+    
+    //pc/mobile 구분
+    let target="khan";
+
+    CRUD.searchData("getAll","products").then(products=>{
+        CRUD.searchData("getBoard","board").then(memos=>{
+            res.render(target, { 
+                title: '칸 티샤스 마켓'
+                , products : products
+                , name : '김냐냐'
+                , device : md.mobile()
+                , memos : memos
+                , deviceID : deviceID.machineIdSync()
+            });
+        });
+    });
+}
+
+exports.manageKhan = function(req,res) {
+    CRUD.searchData("getAll","products").then(products=>{
+        var target="manageKhan";
+        res.render(target, {
+            title: '상품관리'
+            , products : products
+        });
+    });
+}
+
 exports.manage = function(req,res) {
 
     CRUD.searchData("getAll","products").then(products=>{
@@ -96,4 +128,33 @@ exports.old = function(req,res) {
             , tags : tags
         });
     });
+}
+
+exports.goods = function(req,res) {
+
+    const xlsx = require('xlsx');
+    const workbook = xlsx.readFile('./files/goods.xlsx'); // 액셀 파일 읽어오기
+    const firstSheetName = workbook.SheetNames[0]; // 첫 번째 시트 이름 가져오기
+    const firstShee = workbook.Sheets[firstSheetName]; // 시트 이름을 이용해 엑셀 파일의 첫 번째 시트 가져오기
+    const firstSheeJson = xlsx.utils.sheet_to_json(firstShee); // 첫 번째 시트 내용을 json 데이터로 변환
+
+    let goods = [];
+
+    for(let i=0; i<firstSheeJson.length; i++){
+        let good = {};
+        good.depth1 = firstSheeJson[i].대분류명;
+        good.depth2 = firstSheeJson[i].중분류명;
+        good.depth3 = firstSheeJson[i].소분류명;
+        good.name = firstSheeJson[i].상품명;
+        good.barcode = firstSheeJson[i].바코드;
+        good.price = firstSheeJson[i].판매가;
+        if(good.depth1 == "티셔츠" || good.depth1 == "케이스" || good.depth1 == "소품") goods.push(good);
+    }
+
+    var target="goods";
+    res.render(target, { 
+        title: '상품목록', 
+        goods : goods
+    });
+
 }

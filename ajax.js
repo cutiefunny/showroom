@@ -21,7 +21,7 @@ exports.controller = function(req,res,next) {
         res.send({result:req.body.op});
     }else if(req.body.op=="updateImg"){
         var filter = { name : req.body.name};
-        var doc = { $set: { img : req.body.img} };    
+        var doc = { $set: { img : req.body.img , deletehash:response.data.deletehash } };    
         CRUD.updateData(req.body.op,"products",filter,doc);
         res.send({result:req.body.op,img : req.body.img});
     }else if(req.body.op=="uploadImage"){

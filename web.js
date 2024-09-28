@@ -45,9 +45,12 @@ console.log("server started");
 app.get('/', router.main);
 app.get('/manage', router.manage);
 app.get('/image', router.image);
-app.get('/old',router.old)
-app.get('/storage',router.storage)
-app.get('/todo',router.todo)
+app.get('/old',router.old);
+app.get('/storage',router.storage);
+app.get('/todo',router.todo);
+app.get('/khan',router.khan);
+app.get('/manageKhan',router.manageKhan);
+app.get('/goods',router.goods);
 
 //ajax 컨트롤러
 app.post('/ajax', ajax.controller);

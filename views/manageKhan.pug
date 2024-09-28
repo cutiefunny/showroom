@@ -1,0 +1,66 @@
+html 
+    head 
+        title=title 
+        meta(charset="UTF-8")
+        meta(name="viewport", content="width=device-width, initial-scale=1.0")
+        link(rel="stylesheet" href="https://cdn.jsdelivr.net/npm/fomantic-ui@2.8.8/dist/semantic.min.css")
+        link(rel='stylesheet', href='/views/css/main.css')
+    body
+        center
+            H1= title 
+            table
+                tr 
+                    td
+                        button#onOff(onclick="toggle()") 비활성 상품 보이기
+                    td
+                        button#save(onclick="save()") 저장
+                    td
+                        button#create(onclick="create()") 새로 만들기
+                    td
+                        button#sortSeq(onclick="sortSeq()") 시퀀스 정렬
+            P
+            table 
+                each product in products 
+                    if product.seq===0
+                        tr(name="gray",style="display:none")
+                            td
+                                input.seq_td.gray(value=product.seq, name="seq", onchange="change(this)")
+                            td
+                                input.name_td.gray(value=product.name, name="name", readonly="true")
+                            td 
+                                input.price_td.gray(value=product.price, name="price", onchange="change(this)")
+                            td 
+                                input.name_td.gray(value=product.link, name="link", onchange="change(this)")
+                    else
+                        tr(style="display:block")
+                            td
+                                input.seq_td(value=product.seq, name="seq", onchange="change(this)")
+                            td
+                                input.name_td(value=product.name, name="name", readonly="true")
+                            td 
+                                input.price_td(value=product.price, name="price", onchange="change(this)")
+                            td 
+                                input.name_td(value=product.link, name="link", onchange="change(this)")
+                            if product.img!=null&&product.img!=""
+                                td
+                                    img(src=product.img, id=product.img, style="height:30px" onclick="clickImg(this)")
+                                    br
+                                    img(src=product.img, id=product.img, style="height:30px" onclick="clickImg(this)")
+                            td 
+                                input.name_td(type="file", id="file"+product.name, name="upload", onchange="uploadFile(this)")
+                                br
+                                input.name_td(type="file", id="file2"+product.name, name="upload", onchange="uploadFile(this)")
+            .ui.modal 
+                    .content
+                        #bigImg
+                            input(style="width:300px" id="newName" placeholder="제품명")
+                            input(style="width:100px" id="newPrice" placeholder="가격")
+                            input(style="width:100px" id="newLink" placeholder="링크" onkeyup="if(window.event.keyCode==13){saveNew()}")
+                            //input(style="width:200px" id="newTag" placeholder="태그" onkeyup="if(window.event.keyCode==13){saveNew()}")
+                            button.ui.button.mini(onclick="saveNew()")
+                                i.check.icon.mini
+
+    script(src="//code.jquery.com/jquery-1.11.0.min.js")
+    script(src="https://cdn.jsdelivr.net/npm/fomantic-ui@2.8.8/dist/semantic.min.js")
+    script(src="/script/manage.js")
+    script(src="/script/callAjax.js")
