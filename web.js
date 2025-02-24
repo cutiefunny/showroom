@@ -1,6 +1,6 @@
 //#region 초반 선언부
 const express = require('express');
-const port = 8003;
+const port = 8082;
 const http = require('https'); 
 const path = require('path');
 const moment = require('moment');
@@ -37,7 +37,7 @@ const { createConnection } = require('net');
 
 //리스닝
 app.listen(port, ()=>{
-    console.log('8003번 포트에 대기중!');
+    console.log('start!');
 })
 console.log("server started");
 
