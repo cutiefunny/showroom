@@ -1,6 +1,6 @@
 //#region 초반 선언부
 const express = require('express');
-const port = 8082;
+const port = 8004;
 const http = require('https'); 
 const path = require('path');
 const moment = require('moment');
